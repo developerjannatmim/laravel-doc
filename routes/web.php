@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
+use App\Person;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,13 +17,17 @@ use Illuminate\Http\Request;
 
 // }
 
+app()->bind('mim', Person::class);
 
-// Route::get('/', function (Customer $customer) {
-//     //return view('welcome');
-//     die (get_class($customer));
-// });
+Route::get('/', function (Person $person) {
+    $name = app()->make('mim');
+    $name->setName('lam');
+    echo $name->getName();
+    //dd($name->getName());
 
-Route::get('/', function (Request $request) {
+    
+    //dd($name->getName());
     //return view('welcome');
+    //die(get_class($person));
     
 });
