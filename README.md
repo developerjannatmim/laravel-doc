@@ -16,6 +16,19 @@ Information:
 Information:
 1. service provider laravel er ekti  service. ja laravel application er jonno kchu service diye thake. laravel ee custome service create kora jai. abar laravel kichu by default kichu service provide kore. ja amra project er  app\Providers er moddhe pabo. service provider er moddhe 2ta ethod thake, register() & boot(). prothome shokol service provider er register() call hoy tar por shokol service provider er boot() call hoy. Service Provider ekta object return kore.
 
+## Facade
+Information:
+1. [info](https://laravel.com/docs/10.x/facades)
+
+2. laravel facade hocche ekti laravel service. ja static interface provide kore. jeta static proxies hishabe uposhthapito hoy.
+
+3. facade ter class er object access korte dey.
+
+## Route
+Information:
+1. Route hocche akti path. jar maddhome shokol request sent hoy. http request gula ei root diye jai.
+
+
 
 
 
