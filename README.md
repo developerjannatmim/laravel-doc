@@ -1,52 +1,29 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Laravel Documentation
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Middleware
+## Request Lifecycle
 Information:
-1. মিডলওয়্যার আপনার অ্যাপ্লিকেশনে প্রবেশ করা HTTP অনুরোধগুলি পরিদর্শন এবং ফিল্টার করার জন্য একটি সুবিধাজনক প্রক্রিয়া সরবরাহ করে।
+1. গ্লোবাল মিডলওয়্যার হল সেইগুলি, যেগুলি প্রতিটি HTTP অনুরোধে আমার অ্যাপ্লিকেশন দ্বারা ব্যবহৃত হবে।
 
-2. 
+2. browser -> public/index.html -> http/karnel.php -> global Middelware -> handle() -> service providers(register()) -> service providers(boot()) -> router -> controller-action(view, data) -> router middleware -> global middleware -> browser
 
-## Contributing
+## Service Container
+Information:
+1. ekta class er kaj korar jonno je shokol dependencies gula dorkar shey dependencies gulak class dependencies bole. r ei class dependencies gula system provide kore. system je dependency gula dibe ta class er moddhe add/inject kora k dependency injection bole.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+2. Service Container class dependencies gula manage kore, dependencies injection er upor kaj kore. ter upor amader ekta result show kore.
 
-## Code of Conduct
+## Service Provider
+Information:
+1. service provider laravel er ekti  service. ja laravel application er jonno kchu service diye thake. laravel ee custome service create kora jai. abar laravel kichu by default kichu service provide kore. ja amra project er  app\Providers er moddhe pabo. service provider er moddhe 2ta ethod thake, register() & boot(). prothome shokol service provider er register() call hoy tar por shokol service provider er boot() call hoy. Service Provider ekta object return kore.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Facade
+Information:
+1. [info](https://laravel.com/docs/10.x/facades)
 
-## Security Vulnerabilities
+2. laravel facade hocche ekti laravel service. ja static interface provide kore. jeta static proxies hishabe uposhthapito hoy.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+3. facade ter class er object access korte dey.
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Route
+Information:
+1. Route hocche akti path. jar maddhome shokol request sent hoy. http request gula ei root diye jai.
