@@ -27,3 +27,7 @@ Information:
 ## Route
 Information:
 1. Route hocche akti path. jar maddhome shokol request sent hoy. http request gula ei root diye jai.
+
+## Middleware
+Information:
+1. মিডলওয়্যার আপনার অ্যাপ্লিকেশনে প্রবেশ করা HTTP অনুরোধগুলি পরিদর্শন এবং ফিল্টার করার জন্য একটি সুবিধাজনক প্রক্রিয়া সরবরাহ করে।
