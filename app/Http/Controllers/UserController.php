@@ -20,6 +20,6 @@ class UserController extends Controller
   {
       // Invoice::companyName();
       // Sample::say();
-      App::get();
+      //App::get();
   }
 }
