@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
+use App\Http\Middleware\Admin;
+use App\Http\Middleware\Authenticate;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,18 +15,39 @@ use Illuminate\Http\Request;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-// class Customer
-// {
 
-// }
+Route::get('/', function () {
+    return view('welcome');
+});
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::get('/', function (Customer $customer) {
-//     //return view('welcome');
-//     die (get_class($customer));
+Route::get('/admin', function() {
+    dd('admin page');
+})->middleware([Admin::class, Authenticate::class]);
+
+// Route::group(['middleware' => ['auth', 'admin']], function() {
+//     Route::get('/admin', [AdminController::class, 'index']);
+
 // });
 
-Route::get('/', function (Request $request) {
-    //return view('welcome');
-    
+// Route::get('/admin', [AdminController::class, 'index']);
+
+// Route::get('/editor', function() {
+//     dd('editor has a roll');
+// })->middleware(['editor','auth']);
+
+
+Route::put('/user/{id}', function(string $id) {
+    dd('user id: '.$id.', '.'has an editor and has a roll');
+})->middleware(['editor','auth']);
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+require __DIR__.'/auth.php';
