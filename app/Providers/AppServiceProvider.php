@@ -2,18 +2,20 @@
 
 namespace App\Providers;
 
+use App;
 use Illuminate\Support\ServiceProvider;
-use App\Facades\Invoice;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
      */
-    public function register(): void
+    public function register()
     {
-        $this->app()->bind('Invoice', function($app) {
-            return new Invoice();
-        });
+        App::bind('Invoice',function()
+      {
+         return new \App\Facades\Invoice;
+      });
     }
 
     /**

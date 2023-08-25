@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Facades;
-use Illuminate\Support\Facades;
+use Illuminate\Support\Facades\facade;
 
 class InvoiceFacade extends Facade
 {
-  protected static function  getFacadeAccessor(){
+  public static function  getFacadeAccessor(){
     return 'Invoice';
   }
 }
