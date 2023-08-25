@@ -20,13 +20,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/company', [AdminController::class, 'index']);
 
-Route::get('/admin', function() {
-    dd('admin page');
-})->middleware([Admin::class, Authenticate::class]);
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::get('/admin', function() {
+//     dd('admin page');
+// })->middleware([Admin::class, Authenticate::class]);
 
 // Route::group(['middleware' => ['auth', 'admin']], function() {
 //     Route::get('/admin', [AdminController::class, 'index']);
@@ -40,14 +43,19 @@ Route::get('/admin', function() {
 // })->middleware(['editor','auth']);
 
 
-Route::put('/user/{id}', function(string $id) {
-    dd('user id: '.$id.', '.'has an editor and has a roll');
-})->middleware(['editor','auth']);
+Route::get('/user/{name}/{id}', function(string $name, string $id) {
+    dd('here');
+})->where(['id' => '[1-9]', 'name' => '[a-e]']);
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-require __DIR__.'/auth.php';
+// Route::put('/user/{id}', function(string $id) {
+//     dd('user id: '.$id.', '.'has an editor and has a roll');
+// })->middleware(['editor','auth']);
+
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
+
+// require __DIR__.'/auth.php';

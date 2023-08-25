@@ -11,9 +11,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app()->bind('Invoice', function($app) {
-            return new Invoice();
-        });
+        // $this->app()->bind('Invoice', function($app) {
+        //     return new Invoice();
+        // });
     }
 
     /**
