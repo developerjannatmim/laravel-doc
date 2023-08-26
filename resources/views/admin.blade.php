@@ -6,6 +6,19 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Admin Page</h1>
+	<h1>Admin Page</h1>
+	<form action="#">
+		@csrf
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input type="text" name="name" value="{{ old('name') }}">
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</div>
+	</form>
+	@if(session('status'))
+	<div class="alert alert-success">
+	{{ session('status') }}
+	</div>
+	@endif
 </body>
 </html>

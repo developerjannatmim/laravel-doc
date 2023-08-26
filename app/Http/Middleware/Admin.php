@@ -18,6 +18,7 @@ class Admin
     if(auth()->user()->is_admin){
       return $next($request);
     }
-    abort(401);
+    //abort(401);
+    return redirect()->route('login');
   }
 }
