@@ -34,9 +34,13 @@ Information:
 
 2. লারাভেল একটি মিডলওয়্যার অন্তর্ভুক্ত করে যা যাচাই করে যে আপনার অ্যাপ্লিকেশনটির ব্যবহারকারী প্রমাণীকৃত। ব্যবহারকারীর প্রমাণীকরণ না হলে, মিডলওয়্যার ব্যবহারকারীকে আপনার অ্যাপ্লিকেশনের লগইন স্ক্রিনে পুনঃনির্দেশিত করবে। আর, যদি ব্যবহারকারী প্রমাণীকৃত হয়, মিডলওয়্যার অনুরোধটিকে অ্যাপ্লিকেশনটিতে আরও এগিয়ে যাওয়ার অনুমতি দেবে।
 
+## Http Request
+Information:
+1. Http request method client theke server ee request pathay. server shey request receive kore response sent kore.
 
+2. get method theke data url ee jai. r post method theke data headers ee chole ase.
 
-
+3. Imdempotent hocche kono ek particular resource er opur jodi barbar request pathano hoy, tahole ei barbar request pathanok imdempotent bole. emon kono kaj, ja bar bar repeat korar proyojon chilo na kintu kora hoyeche sheta imdempotent er moddhe pore.
 
 
 

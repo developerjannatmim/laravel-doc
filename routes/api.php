@@ -17,3 +17,32 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/user', function() {
+ return "Hello World";
+});
+
+Route::post('/user', function() {
+ return response()->json([
+     'message' => 'post created successfully',
+    'status' => 200,
+ ]);
+});
+
+Route::delete('/user/{id}', function() {
+    return response()->json([
+    'message' => 'post deleted successfully',
+    'status' => 200,
+]);
+});
+
+Route::put('/user/{id}', function(string $id) {
+    return response($id);
+});
+
+
+
+
+
+
+
