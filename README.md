@@ -43,6 +43,36 @@ Information:
 3. Imdempotent hocche kono ek particular resource er opur jodi barbar request pathano hoy, tahole ei barbar request pathanok imdempotent bole. emon kono kaj, ja bar bar repeat korar proyojon chilo na kintu kora hoyeche sheta imdempotent er moddhe pore.
 
 
+## Macros
+Information:
+1. macros laravel ee custom function make korte help kore. class er moddhe kono function na thakle custome function add korte macros amader akta way provide kore.
+macros small reusable component make korte help kore.
+
+macros use kora jabe:
+response
+request
+Str
+Arr
+Collection
+Router
+urlGenerator
+Cache
+Filesystem
+Rule
+
+## Sharing Data With All Views
+Information:
+jodi emon kono data thake ja multiple view te dekhate hobe. tahole ekhetre amra view::share use korbo. AppServiceProvider er boot method er moddhe view:::share('key', 'value') er moddhe common data likhte hobe. er por ei data, je je page ee dekhate hobe shekhane {{ $key }} likhe show korate pari.
+
+## View Composers
+Information:
+View Composers er kaj holo database theke kono data multiple page ee dekhate hole tokhon view composer use korte hobe. view composer hote pare ekta callback function or class method.
+view composer er maddhome multiple page ee ekey query chalate pari. ejonno Providers er moddhe custome provider create kore, er boot method er moddhe View::composer() method er moddhe amader function likhte pari. view::create oo ekey vabe kaj kore.
+
+
+
+
+
 
 
 

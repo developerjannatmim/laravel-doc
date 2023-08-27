@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Request;
 use App\Models\User;
 use App\Http\Middleware\Admin;
 use App\Http\Middleware\Authenticate;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\View;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,7 +23,32 @@ use App\Http\Middleware\Authenticate;
 |
 */
 
+Route::get('/', function() {
+    return view('greeting');
+});
+
+
+// Route::get('/', function() {
+
+//     return view('greeting')
+//     ->with('name', 'mim')
+//     ->with('occupation', 'teacher');
+
+//     //return View::exists('custome.admin');
+//     //return View::make('greeting', ['name' => 'everyone']);
+//     //return view('greeting', ['name' => 'Mim']);
+// });
+
+
+
+
+
+
+
 // Route::get('/', function () {
+//     $array = ['Post title', 2022,04,5, 'Author name'];
+//     $slug = Arr::arrayToSlug($array);
+//     dd($slug);
 //     return view('welcome');
 // });
 
@@ -31,9 +59,9 @@ use App\Http\Middleware\Authenticate;
 //     ->header('Content-Type', 'text/plain');
 // });
 
-Route::get('/user', function() {
-    return redirect('admin')->with('status', 'successfull!');
-});
+// Route::get('/user', function() {
+//     return redirect('admin')->with('status', 'successfull!');
+// });
 
 
 // Route::get('/admin/one', [AdminController::class, 'index']);

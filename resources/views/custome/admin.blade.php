@@ -6,7 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-	<h1>Admin Page</h1>
+	<h1>{{ $name }} Page</h1>
+	<h2>tax is {{ $tax }}</h2>
 	<form action="#">
 		@csrf
 		<div class="form-group">
