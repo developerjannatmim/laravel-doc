@@ -24,7 +24,7 @@
                                    {{-- This is the first iteration --}}
                                    <li style="color: red">{{ $n }}</li>
                                @elseif($loop->odd)
-                               <li style="color: green">{{ $n }}</li>
+                                <li style="color: green">{{ $n }}</li>
                                @else
                                <li>{{ $n }}</li>
                                @endif
@@ -45,5 +45,25 @@
         </div>
     </div>
 <div>
-  <x-greeting />
+  <x-danger-button />
+  @verbatim
+    <div class="container">
+        Hello, {{ name }}.
+    </div>
+@endverbatim
+
+{{-- <script>
+  var app = {{ Js::from($array) }};
+</script> --}}
+
+ $records = 1;
+
+@if (count($records) === 1)
+    I have one record!
+@elseif (count($records) > 1)
+    I have multiple records!
+@else
+    I don't have any records!
+@endif
+
 </div>
