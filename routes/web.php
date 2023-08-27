@@ -23,8 +23,8 @@ use Illuminate\Support\Facades\View;
 |
 */
 
-Route::get('/', function() {
-    return view('greeting');
+Route::get('/main', function() {
+    return view('main');
 });
 
 

@@ -69,8 +69,9 @@ Information:
 View Composers er kaj holo database theke kono data multiple page ee dekhate hole tokhon view composer use korte hobe. view composer hote pare ekta callback function or class method.
 view composer er maddhome multiple page ee ekey query chalate pari. ejonno Providers er moddhe custome provider create kore, er boot method er moddhe View::composer() method er moddhe amader function likhte pari. view::create oo ekey vabe kaj kore.
 
-
-
+## Blade Template
+Information:
+PHP diye toyri template engine.
 
 
 
