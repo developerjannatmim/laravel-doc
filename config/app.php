@@ -170,6 +170,7 @@ return [
 		App\Providers\RouteServiceProvider::class,
 		App\Providers\RiakServiceProvider::class,
 		App\Providers\ComposerServiceProvider::class,
+		App\Providers\ExampleServiceProvider::class,
 	])->toArray(),
 
 	/*

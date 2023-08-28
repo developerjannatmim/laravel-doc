@@ -10,7 +10,11 @@ Information:
 Information:
 1. ekta class er kaj korar jonno je shokol dependencies gula dorkar shey dependencies gulak class dependencies bole. r ei class dependencies gula system provide kore. system je dependency gula dibe ta class er moddhe add/inject kora k dependency injection bole.
 
-2. Service Container class dependencies gula manage kore, dependencies injection er upor kaj kore. ter upor amader ekta result show kore.
+2. Service Container class dependencies gula manage kore, inject kora dependencies gula resolve kore. ter upor amader ekta result show kore.
+
+3. service container hocche ekta powerfull tool. jar kaj class dependencies gula manage kora. ei dependencies gula thake class er constractor/setter method er moddhe. application er dependencies gula vendor folder er moddhe thake.
+
+4. app() method er moddhe application er shob kichu include thake. provider k call korte hole app()->make('...') er moddhe service name likhte hoy. app er shob service gula binding korbo AppServiceProvider er moddhe. 
 
 ## Service Provider
 Information:

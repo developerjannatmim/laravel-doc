@@ -31,23 +31,47 @@ use Psr\Container\ContainerInterface;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::middleware(['admin'])->group(function () {
-
-	Route::get('/main', function () {
-		dd('hello');
-	});
+/***  start Service Provider ***/
+Route::get('/', function () {
+	return view('example');
 
 });
 
-Route::get('/dashboard', function () {
-	return view('dashboard');
-})->name('dashboard');
 
-Route::get('/login', function () {
-	return view('auth.login');
-})->name('login');
+/***  end Service Provider ***/
 
+
+
+/***  start Service container ***/
+// Route::get('/', function () {
+// 	//return view('welcome');
+// 	//dd(app());
+// 	dd(app()->make('second_service_provider'));
+// });
+
+// Route::get('/test', function () {
+// 	return 'test';
+// });
+/***  end Service container ***/
+
+
+/***  start Route ***/
+// Route::middleware(['admin'])->group(function () {
+
+// 	Route::get('/main', function () {
+// 		dd('hello');
+// 	});
+
+// });
+
+// Route::get('/dashboard', function () {
+// 	return view('dashboard');
+// })->name('dashboard');
+
+// Route::get('/login', function () {
+// 	return view('auth.login');
+// })->name('login');
+/***  end Route ***/
 
 
 //Route::get(uri:'/test', action:App\Http\Controllers\TestController::class);
@@ -184,6 +208,3 @@ require __DIR__ . '/auth.php';
 //return view('welcome');
 //die(get_class($person));
 
-Route::get('/', function () {
-	return view('welcome');
-});

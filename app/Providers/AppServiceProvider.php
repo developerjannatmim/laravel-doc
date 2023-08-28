@@ -5,6 +5,7 @@ namespace App\Providers;
 use App;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+//use Illuminate\Support\Facades\App;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -12,10 +13,20 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-    //     App::bind('Invoice',function()
-    //   {
-    //      return new \App\Facades\Invoice;
-    //   });
+        // binding er 1st param service name & 2nd param function...
+        app()->bind('first_service_provider', function() {
+            dd('this is my first service container'); // app() method...
+        });
+
+        $this->app->bind('second_service_provider', function() {
+            dd('this is my second service container'); // $this->app properties...
+        });
+
+        App::bind('third_service_provider', function() {
+            dd('this is my third service container'); // App facade...
+        });
+
+
     }
 
     /**
@@ -30,9 +41,9 @@ class AppServiceProvider extends ServiceProvider
         // });
 
         //View::share( 'tax', '25%' );
-        View::composer('*', function($view) {
-            $text = 'This is Me';
-            $view->with('text', $text);
-        });
+        // View::composer('*', function($view) {
+        //     $text = 'This is Me';
+        //     $view->with('text', $text);
+        // });
     }
 }
