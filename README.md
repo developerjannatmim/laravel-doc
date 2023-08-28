@@ -1,4 +1,3 @@
-=======
 ## Laravel Documentation
 
 ## Request Lifecycle
