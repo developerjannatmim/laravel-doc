@@ -3,7 +3,10 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Request;
+//use illuminate\Support\Facades\Request;
 use Throwable;
+use App\Exceptions\CustomeException;
 
 class Handler extends ExceptionHandler
 {
@@ -23,8 +26,10 @@ class Handler extends ExceptionHandler
      */
     public function register(): void
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->renderable(function (CustomeException $e) {
+            return response()->json([
+                'message' => $e->getMessage(),
+            ], $e->getCode());
         });
     }
 }
