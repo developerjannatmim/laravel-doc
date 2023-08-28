@@ -14,7 +14,7 @@ Information:
 
 ## Service Provider
 Information:
-1. service provider laravel er ekti  service. ja laravel application er jonno kchu service diye thake. laravel ee custome service create kora jai. abar laravel kichu by default kichu service provide kore. ja amra project er  app\Providers er moddhe pabo. service provider er moddhe 2ta ethod thake, register() & boot(). prothome shokol service provider er register() call hoy tar por shokol service provider er boot() call hoy. Service Provider ekta object return kore.
+1. service provider laravel er ekti  service. ja laravel application er jonno kchu service diye thake. laravel ee custome service create kora jai. abar laravel kichu by default kichu service provide kore. ja amra project er  app\Providers er moddhe pabo. service provider er moddhe 2ta method thake, register() & boot(). prothome shokol service provider er register() call hoy tar por shokol service provider er boot() call hoy. Service Provider ekta object return kore.
 
 ## Facade
 Information:

@@ -2,19 +2,20 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\View;
+use App;
 use Illuminate\Support\ServiceProvider;
-use App\Facades\Invoice;
-use Illuminate\Support\Str;
-use Illuminate\Support\Arr;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
      */
-    public function register(): void
+    public function register()
     {
-        //
+    //     App::bind('Invoice',function()
+    //   {
+    //      return new \App\Facades\Invoice;
+    //   });
     }
 
     /**
