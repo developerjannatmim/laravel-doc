@@ -150,7 +150,7 @@ Route::get(uri:'/test', action:App\Http\Controllers\TestController::class);
 //     dd('user id: '.$id.', '.'has an editor and has a roll');
 // })->middleware(['editor','auth']);
 
-//************* 
+//*************
 
 Route::middleware('auth')->group(function () {
 	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
