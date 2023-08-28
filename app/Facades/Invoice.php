@@ -10,6 +10,6 @@ class Invoice
   }
 
   public function currentDate() {
-    return Carbon\Carbon::now()->format('Y-m-d');
+    return Carbon::now()->format('Y-m-d');
   }
 }

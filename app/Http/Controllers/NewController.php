@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\NewController;
 use Illuminate\Http\Request;
 
 class NewController extends Controller

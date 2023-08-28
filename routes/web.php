@@ -32,9 +32,9 @@ use Psr\Container\ContainerInterface;
 |
 */
 
-Route::get(uri:'/test', action:App\Http\Controllers\TestController::class);
+//Route::get(uri:'/test', action:App\Http\Controllers\TestController::class);
 
-
+Route::get('/', [UserController::class, 'index']);
 
 
 
@@ -168,8 +168,8 @@ require __DIR__ . '/auth.php';
     //return view('welcome');
     //die(get_class($person));
 
-    Route::get('/', function(ContainerInterface $container){
-        // $service = $container->get(Transistor::class);
-        return view('welcome');
-    });
+    // Route::get('/', function(ContainerInterface $container){
+    //     // $service = $container->get(Transistor::class);
+    //     return view('welcome');
+    // });
 
