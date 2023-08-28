@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use App\Facades\Invoice;
+use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -11,9 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app()->bind('Invoice', function($app) {
-            return new Invoice();
-        });
+        //
     }
 
     /**
@@ -21,6 +22,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Arr::macro('arrayToSlug', function(Array $array) {
+        //     $string = implode(' ', $array);
+        //     $slug = Str::slug($string);
+        //     return $slug;
+        // });
+
+        //View::share( 'tax', '25%' );
+        View::composer('*', function($view) {
+            $text = 'This is Me';
+            $view->with('text', $text);
+        });
     }
 }
