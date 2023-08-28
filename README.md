@@ -73,9 +73,11 @@ view composer er maddhome multiple page ee ekey query chalate pari. ejonno Provi
 Information:
 PHP diye toyri template engine.
 
+## URL Generate
+Information:
+1. [go to](https://laravel.com/api/9.x/Illuminate/Support/Facades/URL.html)
 
-
-
+2. laravel, URL generate korar jonno URL helper function provide kore. laravel jokhon ekta url generate kore tokhon autometically scheme(http/https) use kore.
 
 
 

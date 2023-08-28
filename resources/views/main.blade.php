@@ -2,8 +2,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Dashboard</div>
-                        <p>{{ time() }}</p>
+                    <div class="card-header">Main Dashboard</div>
+										{{URL::previous()}}
+                        {{-- <p>{{ time() }}</p>
                         {!! '<h1>hello</h1>' !!}
                         {!! '<h2>hello</h2>' !!}
                         {!! '<h3>hello</h3>' !!}
@@ -11,17 +12,18 @@
                         {!! '<h5>hello</h5>' !!}
                         {!! '<h6>hello</h6>' !!}
                         {{-- comment statement --}}
-                        {{-- {!! "<script>alert('Yahoo Baba')</script>" !!} --}} {{-- alert message --}}
-                        {{ "<script>alert('Yahoo Baba')</script>" }} {{-- as it is print --}}
+                        {{-- {!! "<script>alert('Yahoo Baba')</script>" !!} --}} {{-- alert message --
+                        {{ "<script>alert('Yahoo Baba')</script>" }} {{-- as it is print --
                         @php
                         $names = ['lam','mim','asha','lam','mim','asha'];
                         $user = 'User Yahoo Baba';
-                        @endphp
-                        <ul>
+                        @endphp --}}
+
+                        {{-- <ul>
                             @foreach ( $names as $n )
-                               {{-- <li>{{ $loop->count }} - {{ $n }}</li> --}}
+                               {{-- <li>{{ $loop->count }} - {{ $n }}</li> --
                                @if ($loop->even)
-                                   {{-- This is the first iteration --}}
+                                   {{-- This is the first iteration --
                                    <li style="color: red">{{ $n }}</li>
                                @elseif($loop->odd)
                                 <li style="color: green">{{ $n }}</li>
@@ -32,19 +34,30 @@
                             <br>
                             {{ $user }}
                             @@if()
-                        </ul>
+                        </ul> --}}
+
                     <div class="card-body">
                        <ul class="list-group">
-                           @foreach($category as $category)
+                           {{-- @foreach($category as $category)
                            <li class="list-group-item">{{$category->title }}</li>
-                            @endforeach
+                            @endforeach --}}
+														<li>
+															<a href="/greeting">greeting</a>
+															<a href="/">welcome</a>
+														</li>
                        </ul>
+											 <form action="{{URL::to('save_data')}}">
+											<input type="text" placeholder="name">
+											<input type="text" placeholder="email">
+											<button type="submit" class="btn btn-primary">Submit</button>
+											</form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<div>
+
+{{-- <div>
   <x-danger-button />
   @verbatim
     <div class="container">
@@ -54,16 +67,7 @@
 
 {{-- <script>
   var app = {{ Js::from($array) }};
-</script> --}}
+</script>
 
- $records = 1;
+</div> --}}
 
-@if (count($records) === 1)
-    I have one record!
-@elseif (count($records) > 1)
-    I have multiple records!
-@else
-    I don't have any records!
-@endif
-
-</div>

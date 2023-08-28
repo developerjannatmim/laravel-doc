@@ -12,6 +12,9 @@ use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\View;
+use App\Models\Category;
+use Illuminate\Support\Facades\URL;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,10 +25,31 @@ use Illuminate\Support\Facades\View;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//$category = App\Models\Category::find(1);
+//dd(url('/category/{$category->id}'));
+//dd(url()->current());
+//dd(url()->full());
+//dd(url()->previous());
+// echo (URL::current());
+// echo (URL::full());
+// echo (URL::previous());
 
-Route::get('/main', function() {
-    return view('main');
+Route::get('/', function () {
+	return view('welcome');
 });
+Route::get('/main', function () {
+	return view('main');
+});
+
+Route::get('/greeting', function () {
+	return view('greeting');
+});
+
+// Route::get('/category/{title}', function (Category $category) {
+//     return view('main');
+//     //return view('main');
+//     //$category = Category::all();
+// })->name('main');
 
 
 // Route::get('/', function() {
@@ -106,9 +130,9 @@ Route::get('/main', function() {
 //************* 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+	Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
