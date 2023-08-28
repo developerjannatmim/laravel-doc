@@ -10,7 +10,7 @@ Information:
 Information:
 1. ekta class er kaj korar jonno je shokol dependencies gula dorkar shey dependencies gulak class dependencies bole. r ei class dependencies gula system provide kore. system je dependency gula dibe ta class er moddhe add/inject kora k dependency injection bole.
 
-2. Service Container class dependencies gula manage kore, dependencies injection er upor kaj kore. ter upor amader ekta result show kore.
+2. Service Container class dependencies gula manage kore, dependencies injection resolve kore. ter upor amader ekta response dey.
 
 ## Service Provider
 Information:
