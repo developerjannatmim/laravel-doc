@@ -3,7 +3,7 @@
 namespace App;
 
 
-class Person 
+class Person
 {
     public $name;
     public function setName($name)

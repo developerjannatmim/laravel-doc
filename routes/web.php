@@ -32,9 +32,27 @@ use Psr\Container\ContainerInterface;
 |
 */
 
+Route::middleware(['admin'])->group(function () {
+
+	Route::get('/main', function () {
+		dd('hello');
+	});
+
+});
+
+Route::get('/dashboard', function () {
+	return view('dashboard');
+})->name('dashboard');
+
+Route::get('/login', function () {
+	return view('auth.login');
+})->name('login');
+
+
+
 //Route::get(uri:'/test', action:App\Http\Controllers\TestController::class);
 
-Route::get('/', [UserController::class, 'index']);
+//Route::get('/', [UserController::class, 'index']);
 
 
 
@@ -110,9 +128,7 @@ Route::get('/', [UserController::class, 'index']);
 // Route::get('/user/{id}', [UserController::class, 'show']);
 
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 
 
@@ -153,23 +169,21 @@ require __DIR__ . '/auth.php';
 
 //app()->bind('mim', Person::class);
 // Route::get('/cache', function () {
-    // return Response::json([
-    // ])
-    //or
-    // return response()->json([
-    // ]);
-    // return Cache::get('key');
-    //echo Invoice::currentDate();
-    // $name = app()->make('mim');
-    // $name->setName('lam');
-    // echo $name->getName();
-    // //dd($name->getName());
-    //dd($name->getName());
-    //return view('welcome');
-    //die(get_class($person));
+// return Response::json([
+// ])
+//or
+// return response()->json([
+// ]);
+// return Cache::get('key');
+//echo Invoice::currentDate();
+// $name = app()->make('mim');
+// $name->setName('lam');
+// echo $name->getName();
+// //dd($name->getName());
+//dd($name->getName());
+//return view('welcome');
+//die(get_class($person));
 
-    // Route::get('/', function(ContainerInterface $container){
-    //     // $service = $container->get(Transistor::class);
-    //     return view('welcome');
-    // });
-
+Route::get('/', function () {
+	return view('welcome');
+});
