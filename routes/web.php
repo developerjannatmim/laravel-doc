@@ -21,6 +21,7 @@ use App\Person;
 use App\Services\Transistor;
 use Psr\Container\ContainerInterface;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,6 +42,30 @@ Route::get('/my-class', function () {
 	dd(app()->make('my_class'));
 
 });
+
+Route::get('/new', function() {
+	$geolocation = app(\App\Providers\GeolocationServiceProvider::class);
+	return $geolocation;
+});
+
+Route::get('/', function () {
+	return view('welcome');
+});
+// Route::middleware(['admin'])->group(function () {
+
+// 	Route::get('/main', function () {
+// 		dd('hello');
+// 	});
+
+// });
+
+// Route::get('/dashboard', function () {
+// 	return view('dashboard');
+// })->name('dashboard');
+
+// Route::get('/login', function () {
+// 	return view('auth.login');
+// })->name('login');
 
 
 /***  end Service Provider ***/
@@ -214,4 +239,7 @@ require __DIR__ . '/auth.php';
 //dd($name->getName());
 //return view('welcome');
 //die(get_class($person));
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
