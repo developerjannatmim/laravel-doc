@@ -32,47 +32,36 @@ use Psr\Container\ContainerInterface;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-/***  start Service Provider ***/
+
+Route::get('/', function () {
+  return view('welcome');
+});
+
+
+
+/*********  start Service Provider *********/
 Route::get('/example', function () {
-	return view('example');
+  return view('example');
 
 });
 
 Route::get('/my-class', function () {
-	dd(app()->make('my_class'));
+  dd(app()->make('my_class'));
 
 });
 
-Route::get('/new', function() {
-	$geolocation = app(\App\Providers\GeolocationServiceProvider::class);
-	return $geolocation;
+Route::get('/new', function () {
+  $geolocation = app(\App\Providers\GeolocationServiceProvider::class);
+  return $geolocation;
 });
 
-Route::get('/', function () {
-	return view('welcome');
-});
-// Route::middleware(['admin'])->group(function () {
-
-// 	Route::get('/main', function () {
-// 		dd('hello');
-// 	});
-
-// });
-
-// Route::get('/dashboard', function () {
-// 	return view('dashboard');
-// })->name('dashboard');
-
-// Route::get('/login', function () {
-// 	return view('auth.login');
-// })->name('login');
-
-
-/***  end Service Provider ***/
+/*********  end Service Provider *********/
 
 
 
-/***  start Service container ***/
+
+
+/*********  start Service container *********/
 // Route::get('/', function () {
 // 	//return view('welcome');
 // 	//dd(app());
@@ -82,10 +71,13 @@ Route::get('/', function () {
 // Route::get('/test', function () {
 // 	return 'test';
 // });
-/***  end Service container ***/
+/*********  end Service container *********/
 
 
-/***  start Route ***/
+
+
+
+/*********  start Route *********/
 // Route::middleware(['admin'])->group(function () {
 
 // 	Route::get('/main', function () {
@@ -101,16 +93,32 @@ Route::get('/', function () {
 // Route::get('/login', function () {
 // 	return view('auth.login');
 // })->name('login');
-/***  end Route ***/
+
+// Route::get('/', function () {
+//     $array = ['Post title', 2022,04,5, 'Author name'];
+//     $slug = Arr::arrayToSlug($array);
+//     dd($slug);
+//     return view('welcome');
+// });
+
+//Route::get('/admin', NewController::class);
+
+// Route::get('/home', function() {
+//     return response('hello world', 200)
+//     ->header('Content-Type', 'text/plain');
+// });
+
+// Route::get('/user', function() {
+//     return redirect('admin')->with('status', 'successfull!');
+// });
+/*********  end Route *********/
 
 
-//Route::get(uri:'/test', action:App\Http\Controllers\TestController::class);
-
-//Route::get('/', [UserController::class, 'index']);
 
 
 
 
+/*********  start URL *********/
 //$category = App\Models\Category::find(1);
 //dd(url('/category/{$category->id}'));
 //dd(url()->current());
@@ -131,13 +139,17 @@ Route::get('/', function () {
 // 	return view('greeting');
 // });
 
-// Route::get('/category/{title}', function (Category $category) {
-//     return view('main');
-//     //return view('main');
-//     //$category = Category::all();
-// })->name('main');
+//Route::get(uri:'/test', action:App\Http\Controllers\TestController::class);
 
-/***  start View ***/
+//Route::get('/', [UserController::class, 'index']);
+/*********  end URL *********/
+
+
+
+
+
+
+/*********  start View *********/
 // Route::get('/', function() {
 
 //     return view('greeting')
@@ -148,44 +160,51 @@ Route::get('/', function () {
 //     //return View::make('greeting', ['name' => 'everyone']);
 //     //return view('greeting', ['name' => 'Mim']);
 // });
-/***  end View ***/
+
+// Route::get('/category/{title}', function (Category $category) {
+//     return view('main');
+//     //return view('main');
+//     //$category = Category::all();
+// })->name('main');
+
+/*********  end View *********/
 
 
 
 
 
 
-// Route::get('/', function () {
-//     $array = ['Post title', 2022,04,5, 'Author name'];
-//     $slug = Arr::arrayToSlug($array);
-//     dd($slug);
-//     return view('welcome');
-// });
-
-//Route::get('/admin', NewController::class);
-
-// Route::get('/home', function() {
-//     return response('hello world', 200)
-//     ->header('Content-Type', 'text/plain');
-// });
-
-// Route::get('/user', function() {
-//     return redirect('admin')->with('status', 'successfull!');
-// });
-
-
+/*********  start Controller *********/
 // Route::get('/admin/one', [AdminController::class, 'index']);
 // Route::get('/ad', [AdminController::class, 'index']);
 // Route::get('/house', [AdminController::class, 'index1']);
 // Route::get('/', [AdminController::class, 'index3']);
 
 // Route::get('/user/{id}', [UserController::class, 'show']);
+/*********  end Controller *********/
 
 
 
 
 
-/***  start Middleware ***/
+
+/*********  start Middleware *********/
+// Route::middleware(['admin'])->group(function () {
+
+// 	Route::get('/main', function () {
+// 		dd('hello');
+// 	});
+
+// });
+
+// Route::get('/dashboard', function () {
+// 	return view('dashboard');
+// })->name('dashboard');
+
+// Route::get('/login', function () {
+// 	return view('auth.login');
+// })->name('login');
+
 // Route::get('/admin', function() {
 //     dd('admin page');
 // })->middleware([Admin::class, Authenticate::class]);
@@ -204,38 +223,28 @@ Route::get('/', function () {
 // Route::put('/user/{id}', function(string $id) {
 //     dd('user id: '.$id.', '.'has an editor and has a roll');
 // })->middleware(['editor','auth']);
-/***  end Middleware ***/
+/*********  end Middleware *********/
 
+
+
+
+
+/*********  start  *********/
 // Route::get('/user/{name}/{id}', function(string $name, string $id) {
 //     dd('here');
 // })->where(['id' => '[1-9]', 'name' => '[a-e]']);
+/*********  end  *********/
 
 
 
 
-//*************
+
+//************* Breeze packages
 
 Route::middleware('auth')->group(function () {
-	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-	Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__ . '/auth.php';
-
-//app()->bind('mim', Person::class);
-// Route::get('/cache', function () {
-// return Response::json([
-// ])
-//or
-// return response()->json([
-// ]);
-// return Cache::get('key');
-//echo Invoice::currentDate();
-// $name = app()->make('mim');
-// $name->setName('lam');
-// echo $name->getName();
-// //dd($name->getName());
-//dd($name->getName());
-//return view('welcome');
-//die(get_class($person));
