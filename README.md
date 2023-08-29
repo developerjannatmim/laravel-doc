@@ -51,6 +51,13 @@ Information:
 
 3. facade ter class er object access korte dey.
 
+4. config() method, laravel er config directory te thaka  files er values gula get/set korte use kora hoy.
+
+5. facade hocche ekta class, jeta container theke object niye use korte dey.
+
+### Note:
+function er moddhe thaka parameter er kaj holo, etar moddhe j data ase sheta function er moddhe use hoy.
+
 ## Route
 
 Information:

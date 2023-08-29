@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+use App\Facades\Example\exampleFacade;
+use App\Facades\Information\InfoFacade;
+
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NewController;
 use App\Http\Controllers\AdminController;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Request;
 use App\Models\User;
 use App\Http\Middleware\Admin;
@@ -14,12 +17,13 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\View;
 use App\Models\Category;
 use Illuminate\Support\Facades\URL;
-use App\Facades\Invoice;
+use Facades\App\Facades\Invoice;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Cache;
 use App\Person;
 use App\Services\Transistor;
 use Psr\Container\ContainerInterface;
+
 
 
 /*
@@ -36,24 +40,43 @@ use Psr\Container\ContainerInterface;
 Route::get('/', function () {
   return view('welcome');
 });
+/*********  start config method *********/
+Route::get('/con', function () {
+  config()->set('socialHandle.facebook.url' , 'https://www.facebook.com/jannatmim');
+  echo config()->get('socialHandle.facebook.url');
+});
+/*********  end config method *********/
 
+/*********  start Facade *********/
+// Route::get('/invo', function () {
+//   return Invoice::companyName();
+// });
 
+Route::get('/info', function () {
+  return InfoFacade::example();
+});
+
+Route::get('/exam', function () {
+  return exampleFacade::test();
+});
+
+/*********  end Facade *********/
 
 /*********  start Service Provider *********/
-Route::get('/example', function () {
-  return view('example');
+// Route::get('/example', function () {
+//   return view('example');
 
-});
+// });
 
-Route::get('/my-class', function () {
-  dd(app()->make('my_class'));
+// Route::get('/my-class', function () {
+//   dd(app()->make('my_class'));
 
-});
+// });
 
-Route::get('/new', function () {
-  $geolocation = app(\App\Providers\GeolocationServiceProvider::class);
-  return $geolocation;
-});
+// Route::get('/new', function () {
+//   $geolocation = app(\App\Providers\GeolocationServiceProvider::class);
+//   return $geolocation;
+// });
 
 /*********  end Service Provider *********/
 
