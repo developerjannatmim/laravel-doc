@@ -15,10 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// Route::get('/v1', function() {
-//  return "V1 Amar World";
+Route::get('/v1', function() {
+ //return "V1 Amar World";
+ return view('example');
  
-// });
+});
 
 
 

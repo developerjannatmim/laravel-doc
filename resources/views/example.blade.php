@@ -7,5 +7,7 @@
 </head>
 <body>
   <h1>this is : {{ $name['a'] }}</h1>
+  <h1>this is : {{ $name['b'] }}</h1>
+  <h1>this is : {{ $name['c'] }}</h1>
 </body>
 </html>

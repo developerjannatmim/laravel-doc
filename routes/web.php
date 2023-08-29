@@ -32,8 +32,13 @@ use Psr\Container\ContainerInterface;
 |
 */
 /***  start Service Provider ***/
-Route::get('/', function () {
+Route::get('/example', function () {
 	return view('example');
+
+});
+
+Route::get('/my-class', function () {
+	dd(app()->make('my_class'));
 
 });
 
@@ -107,7 +112,7 @@ Route::get('/', function () {
 //     //$category = Category::all();
 // })->name('main');
 
-
+/***  start View ***/
 // Route::get('/', function() {
 
 //     return view('greeting')
@@ -118,7 +123,7 @@ Route::get('/', function () {
 //     //return View::make('greeting', ['name' => 'everyone']);
 //     //return view('greeting', ['name' => 'Mim']);
 // });
-
+/***  end View ***/
 
 
 
@@ -155,7 +160,7 @@ Route::get('/', function () {
 
 
 
-
+/***  start Middleware ***/
 // Route::get('/admin', function() {
 //     dd('admin page');
 // })->middleware([Admin::class, Authenticate::class]);
@@ -171,15 +176,17 @@ Route::get('/', function () {
 //     dd('editor has a roll');
 // })->middleware(['editor','auth']);
 
+// Route::put('/user/{id}', function(string $id) {
+//     dd('user id: '.$id.', '.'has an editor and has a roll');
+// })->middleware(['editor','auth']);
+/***  end Middleware ***/
 
 // Route::get('/user/{name}/{id}', function(string $name, string $id) {
 //     dd('here');
 // })->where(['id' => '[1-9]', 'name' => '[a-e]']);
 
 
-// Route::put('/user/{id}', function(string $id) {
-//     dd('user id: '.$id.', '.'has an editor and has a roll');
-// })->middleware(['editor','auth']);
+
 
 //*************
 

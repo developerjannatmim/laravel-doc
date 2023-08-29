@@ -27,6 +27,12 @@ class AppServiceProvider extends ServiceProvider
         });
 
 
+        $this->app->bind('my_class', function () {
+            //return new MyClass($app);
+            dd('my_class_service');
+        });
+
+
     }
 
     /**
