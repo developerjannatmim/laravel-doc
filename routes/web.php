@@ -239,7 +239,3 @@ require __DIR__ . '/auth.php';
 //dd($name->getName());
 //return view('welcome');
 //die(get_class($person));
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
