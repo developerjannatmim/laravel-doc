@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Cache;
 use App\Facades\Example\exampleFacade;
 use App\Facades\Information\InfoFacade;
 
@@ -19,7 +21,6 @@ use App\Models\Category;
 use Illuminate\Support\Facades\URL;
 use Facades\App\Facades\Invoice;
 use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Cache;
 use App\Person;
 use App\Services\Transistor;
 use Psr\Container\ContainerInterface;
@@ -40,27 +41,49 @@ use Psr\Container\ContainerInterface;
 Route::get('/', function () {
   return view('welcome');
 });
-/*********  start config method *********/
-Route::get('/con', function () {
-  config()->set('socialHandle.facebook.url' , 'https://www.facebook.com/jannatmim');
-  echo config()->get('socialHandle.facebook.url');
-});
-/*********  end config method *********/
+
+Route::get('/dashboard', function () {
+	return view('dashboard');
+})->name('dashboard');
+
+/*********  start config method concept *********/
+// Route::get('/con', function () {
+//   config()->set('socialHandle.facebook.url' , 'https://www.facebook.com/jannatmim');
+//   echo config()->get('socialHandle.facebook.url');
+// });
+/*********  end config method concept *********/
+
+
+
 
 /*********  start Facade *********/
 // Route::get('/invo', function () {
 //   return Invoice::companyName();
 // });
 
-Route::get('/info', function () {
-  return InfoFacade::example();
-});
+// Route::get('/cache', function () {
+//   dd(Cache::shouldReceive('get')
+//   ->with('key')
+//   ->andReturn('value'));
 
-Route::get('/exam', function () {
-  return exampleFacade::test();
-});
+//   //dd(Cache::get('key'));
+// });
+
+// Route::get('/ca', [UserController::class, 'showCategory']);
+
+// Route::get('/info', function () {
+//   return InfoFacade::example();
+// });
+
+// Route::get('/exam', function () {
+//   return exampleFacade::test();
+// });
 
 /*********  end Facade *********/
+
+
+
+
 
 /*********  start Service Provider *********/
 // Route::get('/example', function () {
@@ -101,11 +124,59 @@ Route::get('/exam', function () {
 
 
 /*********  start Route *********/
-// Route::middleware(['admin'])->group(function () {
 
-// 	Route::get('/main', function () {
-// 		dd('hello');
-// 	});
+// Route::get('/user/{id}', function (Request $request, string $id) {
+//     return 'User '.$id;
+// });
+
+// Route::get('/user/{name}/{id}', function(string $name, string $id) {
+//     dd('here');
+// })->where(['id' => '[1-9]', 'name' => '[a-e]']);
+
+// Route::get('/user/{name?}', function (string $name = null) {
+//   dd($name);
+// });
+
+// Route::get('/user/{name?}', function (string $name = 'John') {
+//   return $name;
+// });
+
+// Route::get('/search/{search}', function (string $search) {
+//   return $search;
+// })->where('search', '.*');
+
+// Route::get('/user/profile', function () {
+//   dd('hi');
+// })->name('profile');
+
+// Route::prefix('admin')->group(function () {
+//   Route::get('/users', function () {
+//       // Matches The "/admin/users" URL
+//       dd('hi');
+//   });
+// });
+
+// Route::name('admin.')->group(function () {
+//   Route::get('/users', function () {
+//       // Route assigned name "admin.users"...
+//       dd('hi');
+//   })->name('users');
+// });
+
+// Route::get('/users/{id}', function (User $id) {
+//   dd($id->name);
+// });
+
+// Route::get('/users/{user:id}', function (User $user) {
+//   return $user; // slug means-: table's field name such as user table field name(id/name/email...)
+// });
+
+// Route::get('/product-test', [ProductController::class, 'index']);
+
+// Route::get('/user', function () {
+//   //dd(Route::current());
+//   //dd(Route::currentRouteName());
+//   //dd(Route::currentRouteAction());
 
 // });
 
@@ -134,6 +205,17 @@ Route::get('/exam', function () {
 // Route::get('/user', function() {
 //     return redirect('admin')->with('status', 'successfull!');
 // });
+
+// Route::middleware(['throttle:uploads'])->group(function () {
+//   Route::get('/audio', function () {
+//       return 'hi';
+//   });
+
+//   Route::get('/video', function () {
+//       // ...
+//   });
+// });
+
 /*********  end Route *********/
 
 
@@ -154,6 +236,7 @@ Route::get('/exam', function () {
 // Route::get('/', function () {
 // 	return view('welcome');
 // });
+
 // Route::get('/main', function () {
 // 	return view('main');
 // });
@@ -210,19 +293,22 @@ Route::get('/exam', function () {
 
 
 
-
 /*********  start Middleware *********/
-// Route::middleware(['admin'])->group(function () {
+// Route::get('/user', function() {
+// dd('hi');
+// })->middleware([Admin::class, Authenticate::class]);
 
+// Route::middleware(['admin'])->group(function () {
 // 	Route::get('/main', function () {
 // 		dd('hello');
 // 	});
-
 // });
 
-// Route::get('/dashboard', function () {
-// 	return view('dashboard');
-// })->name('dashboard');
+// Route::middleware(['admin'])->group(function () {
+// 	Route::get('/main', function () {
+// 		dd('hello');
+// 	});
+// });
 
 // Route::get('/login', function () {
 // 	return view('auth.login');
@@ -253,9 +339,7 @@ Route::get('/exam', function () {
 
 
 /*********  start  *********/
-// Route::get('/user/{name}/{id}', function(string $name, string $id) {
-//     dd('here');
-// })->where(['id' => '[1-9]', 'name' => '[a-e]']);
+
 /*********  end  *********/
 
 

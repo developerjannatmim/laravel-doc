@@ -51,6 +51,10 @@
 											<input type="text" placeholder="email">
 											<button type="submit" class="btn btn-primary">Submit</button>
 											</form>
+
+                                            <div>
+                                                {{$user}}
+                                            </div>
                     </div>
                 </div>
             </div>
