@@ -13,12 +13,13 @@ class Editor
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, string $role): Response
+    public function handle(Request $request, Closure $next): Response
     {
         // if(auth()->user()->is_editor == auth()->user()->has_role){
         //     return $next($request);
         // }
-        if( $request->user()->hasRole($role) ){
+
+        if( auth()->user()->is_editor ){
             return $next($request);
         }
         abort(401);

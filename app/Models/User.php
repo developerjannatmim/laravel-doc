@@ -47,4 +47,17 @@ class User extends Authenticatable
     {
         return $this->slug;
     }
+
+    public function hasRole()
+    {
+      return $this->is_admin; // this looks for an is_admin column in your users table
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'name' => $this->name,
+            'email' => $this->email
+        ];
+    }
 }

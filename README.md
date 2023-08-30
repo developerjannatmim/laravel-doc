@@ -72,6 +72,16 @@ Information:
 
 2. লারাভেল একটি মিডলওয়্যার অন্তর্ভুক্ত করে যা যাচাই করে যে আপনার অ্যাপ্লিকেশনটির ব্যবহারকারী প্রমাণীকৃত। ব্যবহারকারীর প্রমাণীকরণ না হলে, মিডলওয়্যার ব্যবহারকারীকে আপনার অ্যাপ্লিকেশনের লগইন স্ক্রিনে পুনঃনির্দেশিত করবে। আর, যদি ব্যবহারকারী প্রমাণীকৃত হয়, মিডলওয়্যার অনুরোধটিকে অ্যাপ্লিকেশনটিতে আরও এগিয়ে যাওয়ার অনুমতি দেবে।
 
+3. (php artisan optimize:clear) command run korle, shob cache clear hoye jabe. jodi kono karone route kaj na kore tahole ei comman run korbo.
+
+4. FastCGI(fast common gateway interface) jar kaj browser theke http request data accept kore er processing kore http response return korbe.
+### Terminable Middleware
+There are two types of middleware in the Laravel application. One works before the response and the other works after the response. Sometimes you may need to perform a task after getting the response from the server in your Laravel application. In this case, we can use terminable middleware.
+
+
+## Controller
+Information:
+1. request handling logic gular handler hishabe kaj kore controller.
 ## Http Request
 
 Information:

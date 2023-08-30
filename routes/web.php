@@ -2,12 +2,13 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Cache;
 use App\Facades\Example\exampleFacade;
 use App\Facades\Information\InfoFacade;
-
-use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\ViewController;
 use App\Http\Controllers\NewController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Request;
@@ -46,6 +47,7 @@ Route::get('/dashboard', function () {
 	return view('dashboard');
 })->name('dashboard');
 
+
 /*********  start config method concept *********/
 // Route::get('/con', function () {
 //   config()->set('socialHandle.facebook.url' , 'https://www.facebook.com/jannatmim');
@@ -68,8 +70,6 @@ Route::get('/dashboard', function () {
 
 //   //dd(Cache::get('key'));
 // });
-
-// Route::get('/ca', [UserController::class, 'showCategory']);
 
 // Route::get('/info', function () {
 //   return InfoFacade::example();
@@ -247,7 +247,7 @@ Route::get('/dashboard', function () {
 
 //Route::get(uri:'/test', action:App\Http\Controllers\TestController::class);
 
-//Route::get('/', [UserController::class, 'index']);
+//Route::get('/', [ViewController::class, 'index']);
 /*********  end URL *********/
 
 
@@ -280,13 +280,30 @@ Route::get('/dashboard', function () {
 
 
 
-/*********  start Controller *********/
+/********* start Controller *********/
+
+Route::resource('/users', UserController::class)
+->missing(function (Request $request) {
+  return Redirect::route('dashboard');
+  //abort(404);
+});
+
+// Route::get('/blog/{post}', [PostController::class, 'show'])
+//      ->missing(function (Request $request) {
+// 		// customize the view to add search bar, featured blog
+//     return Redirect::route('posts.404_index');
+// });
+
+/***************** CRUD *****************/
+//Route::resource('users', UserController::class)->withTrashed(['show']);
+/***************** CRUD *****************/
+
 // Route::get('/admin/one', [AdminController::class, 'index']);
 // Route::get('/ad', [AdminController::class, 'index']);
 // Route::get('/house', [AdminController::class, 'index1']);
 // Route::get('/', [AdminController::class, 'index3']);
 
-// Route::get('/user/{id}', [UserController::class, 'show']);
+// Route::get('/user/{id}', [ViewController::class, 'show']);
 /*********  end Controller *********/
 
 
@@ -294,6 +311,35 @@ Route::get('/dashboard', function () {
 
 
 /*********  start Middleware *********/
+// Route::get('/user/{id}', function (string $id) {
+//   dd('admin has a roll');
+// })->middleware('role:is_admin');
+
+// Route::get('/admin', function() {
+//     dd('admin page');
+// })->middleware([Admin::class, Authenticate::class]);
+
+// Route::get('/editor', function() {
+//     dd('editor has a roll');
+// })->middleware(['editor','auth']);
+
+// Route::get('/greeting', function() {
+//   dd('editor has a roll');
+// });
+
+// Route::get('/main', function() {
+//   dd('editor has a roll');
+// });
+
+// Route::middleware([EnsureTokenIsValid::class])->group( function() {
+// Route::get('/test', function() {
+//   //
+// });
+// Route::get('/toast', function() {
+//   //
+// })->withoutMiddleware([EnsureTokenIsValid::class]);
+// });
+
 // Route::get('/user', function() {
 // dd('hi');
 // })->middleware([Admin::class, Authenticate::class]);
@@ -314,9 +360,6 @@ Route::get('/dashboard', function () {
 // 	return view('auth.login');
 // })->name('login');
 
-// Route::get('/admin', function() {
-//     dd('admin page');
-// })->middleware([Admin::class, Authenticate::class]);
 
 // Route::group(['middleware' => ['auth', 'admin']], function() {
 //     Route::get('/admin', [AdminController::class, 'index']);
@@ -325,9 +368,6 @@ Route::get('/dashboard', function () {
 
 // Route::get('/admin', [AdminController::class, 'index']);
 
-// Route::get('/editor', function() {
-//     dd('editor has a roll');
-// })->middleware(['editor','auth']);
 
 // Route::put('/user/{id}', function(string $id) {
 //     dd('user id: '.$id.', '.'has an editor and has a roll');
