@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Cache;
 use App\Facades\Example\exampleFacade;
@@ -39,13 +40,13 @@ use Illuminate\Support\Facades\Cookie;
 |
 */
 
-// Route::get('/', function () {
-//   return view('welcome');
-// });
+Route::get('/', function () {
+  return view('welcome');
+});
 
-// Route::get('/dashboard', function () {
-// 	return view('dashboard');
-// })->name('dashboard');
+Route::get('/dashboard', function () {
+	return view('dashboard');
+})->name('dashboard');
 
 
 /*********  start Response *********/
@@ -69,8 +70,9 @@ use Illuminate\Support\Facades\Cookie;
 //   return $user;
 // });
 
-Route::get('/home', function () {
-$minutes = 60;
+// Route::get('/home', function () {
+// $minutes = 60;
+
 //   return response('Hello World')->cookie(
 //     'name', 'value', $minutes
 // );
@@ -82,19 +84,44 @@ $minutes = 60;
 
 //Cookie::expire('name');
 
-});
+// });
 
 // Route::get('/dashboard', function () {
 //   return redirect('home');
 // });
 
-//Route::resource('users', UserController::class);
+Route::resource('users', UserController::class);
 
-Route::get('/users/{id}', function() {
-  return redirect()->route('deshboard', ['id' => 1]);
-});
+// Route::get('/home', function() {
+//   return redirect()->route('main');
+// });
 
-/*********  start Response *********/
+// Route::get('index', [UserController::class, 'index'])->name('index');
+// Route::get('getalluser', [UserController::class, 'getalluser'])->name('getalluser');
+
+// Route::get('/home', function() {
+//   dd('hello world');
+// });
+
+// Route::get('users/{user:id}', function (User $user) {
+//   return response()->json([
+//     'user' => $user,
+//   ]);
+// });
+
+// Route::get('/home', function(Request $request) {
+// //   return response()->json([
+// //     'name' => 'Abigail',
+// //     'state' => 'CA',
+// // ]);
+
+// return response()
+//   ->json(['name' => 'Abigail', 'state' => 'CA'])
+//   ->withCallback($request->input('callback'));
+
+// });
+
+/*********  end Response *********/
 
 
 
@@ -277,6 +304,16 @@ Route::get('/users/{id}', function() {
 
 
 /*********  start URL *********/
+Route::get('/greeting', function(){
+  return view('greeting');
+});
+
+Route::get('about/{slug?}', [UserController::class, 'index1'])->name('about-us');
+Route::get('post/{post}/comment/{comment}', function($post, $comment) {
+  //
+})->name('post.comment');
+
+
 //$category = App\Models\Category::find(1);
 //dd(url('/category/{$category->id}'));
 //dd(url()->current());
@@ -309,6 +346,18 @@ Route::get('/users/{id}', function() {
 
 
 /*********  start View *********/
+Route::get('/customer', function() {
+return view('components.customer');
+});
+
+Route::get('/main', function() {
+  return view('main');
+  });
+
+  Route::get('/welcome', function() {
+    return view('welcome');
+    });
+
 // Route::get('/', function() {
 
 //     return view('greeting')
@@ -335,11 +384,11 @@ Route::get('/users/{id}', function() {
 
 /********* start Controller *********/
 
-Route::resource('/users', UserController::class)
-->missing(function (Request $request) {
-  return Redirect::route('dashboard');
-  //abort(404);
-});
+// Route::resource('/users', UserController::class)
+// ->missing(function (Request $request) {
+//   return Redirect::route('dashboard');
+//   //abort(404);
+// });
 
 // Route::get('/blog/{post}', [PostController::class, 'show'])
 //      ->missing(function (Request $request) {

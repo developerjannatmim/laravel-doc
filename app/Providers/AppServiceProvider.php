@@ -3,10 +3,14 @@
 namespace App\Providers;
 
 use App;
+
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Facades\Information\Info;
 use App\Facades\Example\example;
+use Response;
+
+
 
 //use Illuminate\Support\Facades\App;
 class AppServiceProvider extends ServiceProvider
@@ -35,14 +39,13 @@ class AppServiceProvider extends ServiceProvider
     //     dd('my_class_service');
     // });
 
-    $this->app->bind('Info', function ($app) {
-      return new Info();
-    });
+    // $this->app->bind('Info', function ($app) {
+    //   return new Info();
+    // });
 
-    $this->app->bind('example', function ($pp) {
-      return new example();
-    });
-
+    // $this->app->bind('example', function ($pp) {
+    //   return new example();
+    // });
   }
 
   /**
@@ -50,16 +53,24 @@ class AppServiceProvider extends ServiceProvider
    */
   public function boot(): void
   {
-    // Arr::macro('arrayToSlug', function(Array $array) {
-    //     $string = implode(' ', $array);
-    //     $slug = Str::slug($string);
-    //     return $slug;
-    // });
+    Response::macro('success', function($data) {
+      return response()->json([
+        'success' => true,
+        'data' => $data
+      ]);
+    });
 
-    //View::share( 'tax', '25%' );
-    // View::composer('*', function($view) {
-    //     $text = 'This is Me';
-    //     $view->with('text', $text);
-    // });
+    Response::macro('error', function($error, $status_code) {
+      return response()->json([
+        'success' => false,
+        'error' => $error
+      ], $status_code);
+    });
+
+    View::share( 'tax', '25%' );
+    View::creator('*', function($view) {
+      $text = 'This is Me';
+      $view->with('text', $text);
+    });
   }
 }

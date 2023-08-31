@@ -2,7 +2,8 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Main Dashboard</div>
+                    <div class="card-header">Main Dashboard {{ $tax }}</div>
+                    <p>{{$text}}</p>
 										{{URL::previous()}}
                         {{-- <p>{{ time() }}</p>
                         {!! '<h1>hello</h1>' !!}
@@ -38,9 +39,9 @@
 
                     <div class="card-body">
                        <ul class="list-group">
-                           {{-- @foreach($category as $category)
+                           @foreach($category as $category)
                            <li class="list-group-item">{{$category->title }}</li>
-                            @endforeach --}}
+                            @endforeach
 														<li>
 															<a href="/greeting">greeting</a>
 															<a href="/">welcome</a>
@@ -53,7 +54,6 @@
 											</form>
 
                                             <div>
-                                                {{$user}}
                                             </div>
                     </div>
                 </div>
