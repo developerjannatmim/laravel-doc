@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Response;
 use App\Person;
 use App\Services\Transistor;
 use Psr\Container\ContainerInterface;
-
+use Illuminate\Support\Facades\Cookie;
 
 
 /*
@@ -39,13 +39,66 @@ use Psr\Container\ContainerInterface;
 |
 */
 
-Route::get('/', function () {
-  return view('welcome');
+// Route::get('/', function () {
+//   return view('welcome');
+// });
+
+// Route::get('/dashboard', function () {
+// 	return view('dashboard');
+// })->name('dashboard');
+
+
+/*********  start Response *********/
+// Route::get('/', function () {
+//   return 'Hello World';
+// });
+
+
+// Route::get('/home', function () {
+//   $type = 'text/plain';
+//   $content = 'hello new world';
+//   return response($content)
+//   ->withHeaders([
+//     'Content-Type' => $type,
+//     'X-Header-One' => 'Header Value',
+//     'X-Header-Two' => 'Header Value',
+// ]);
+// });
+
+// Route::get('/user/{user}', function (User $user) {
+//   return $user;
+// });
+
+Route::get('/home', function () {
+$minutes = 60;
+//   return response('Hello World')->cookie(
+//     'name', 'value', $minutes
+// );
+
+//return Cookie::queue('name', 'value', $minutes);
+
+// $cookie = cookie('name', 'value', $minutes);
+// return response('Hello World')->cookie($cookie);
+
+//Cookie::expire('name');
+
 });
 
-Route::get('/dashboard', function () {
-	return view('dashboard');
-})->name('dashboard');
+// Route::get('/dashboard', function () {
+//   return redirect('home');
+// });
+
+//Route::resource('users', UserController::class);
+
+Route::get('/users/{id}', function() {
+  return redirect()->route('deshboard', ['id' => 1]);
+});
+
+/*********  start Response *********/
+
+
+
+
 
 
 /*********  start config method concept *********/

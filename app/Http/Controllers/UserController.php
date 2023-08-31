@@ -73,12 +73,16 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required',
+            'name' => 'required|max:5',
+            'email' => 'required|email',
         ]);
-        $user->update($request->all());
+
+        if( $user->update($request->all()) ) {
         return redirect()->route('users.index')
         ->with('Success', 'User updated successfully');
+        }
+        return back()->withInput();
+
     }
 
     /**
