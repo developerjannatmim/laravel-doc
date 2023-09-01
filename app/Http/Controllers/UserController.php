@@ -22,6 +22,7 @@ class UserController extends Controller
 				$users = User::get();
 			}
 			return view('users.index', compact('users'));
+            
 		}
 
     public function index()
@@ -31,6 +32,19 @@ class UserController extends Controller
         ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
+    public function index1(Request $request, $slug) // http response...
+
+    {
+        return 'all users from others';
+    }
+
+    public function getalluser() // http response...
+    {
+        //return redirect()->route('index');
+        //return to_route('index');
+        //return redirect('index');
+        return redirect()->away('https://www.google.com');
+    }
     /**
      * Show the form for creating a new resource.
      */

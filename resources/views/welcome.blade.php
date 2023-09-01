@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Laravel {{$tax}}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,6 +16,7 @@
         </style>
     </head>
     <body class="antialiased">
+        <p>{{ $text }}</p>
         <div>
             <ul class="list-group">
               {{-- @foreach($category as $category)
