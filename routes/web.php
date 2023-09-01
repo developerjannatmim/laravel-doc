@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UrlController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Cache;
 use App\Facades\Example\exampleFacade;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\NewController;
 use App\Http\Controllers\AdminController;
-use Illuminate\Support\Facades\Request;
+// use Illuminate\Support\Facades\Request;
 use App\Models\User;
 use App\Http\Middleware\Admin;
 use App\Http\Middleware\Authenticate;
@@ -26,7 +27,7 @@ use App\Person;
 use App\Services\Transistor;
 use Psr\Container\ContainerInterface;
 use Illuminate\Support\Facades\Cookie;
-
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,29 @@ use Illuminate\Support\Facades\Cookie;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+/* URL Test Start*/
+
+// Route::get('/user',[UrlController::class, 'show']);
+
+Route::get('/',[UrlController::class, 'show'])->name('home');
+Route::get('/about',[UrlController::class, 'about'])->name('about');
+Route::get('/about/{slug}',[UrlController::class, 'index'])->name('about.slug');
+Route::get('post/{post}/comment/{comment}', function($post,$comment){
+  return 'post';
+})->name('post.comment');
+
+Route::get('/secret', function(Request $request) {
+//   if (! $request->hasValidSignature()) {
+//     return 'home';
+// }
+  return 'This is a secret site';
+})->name('secret')->middleware('signed');
+/* URL Test End*/
+
+
+
 
 // Route::get('/', function () {
 //   return view('welcome');
@@ -52,7 +76,6 @@ use Illuminate\Support\Facades\Cookie;
 // Route::get('/', function () {
 //   return 'Hello World';
 // });
-
 
 // Route::get('/home', function () {
 //   $type = 'text/plain';
@@ -69,8 +92,8 @@ use Illuminate\Support\Facades\Cookie;
 //   return $user;
 // });
 
-Route::get('/home', function () {
-$minutes = 60;
+//Route::get('/home', function () {
+//$minutes = 60;
 //   return response('Hello World')->cookie(
 //     'name', 'value', $minutes
 // );
@@ -82,7 +105,7 @@ $minutes = 60;
 
 //Cookie::expire('name');
 
-});
+//});
 
 // Route::get('/dashboard', function () {
 //   return redirect('home');
@@ -94,7 +117,7 @@ Route::get('/users/{id}', function() {
   return redirect()->route('deshboard', ['id' => 1]);
 });
 
-/*********  start Response *********/
+/*********  end Response *********/
 
 
 
