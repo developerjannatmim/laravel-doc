@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UrlController;
@@ -68,6 +69,7 @@ Route::get('/secret', function(Request $request) {
 //   return view('welcome');
 // });
 Route::get('/', function () {
+  dd(compact());
   return view('welcome');
 });
 
@@ -330,14 +332,14 @@ Route::resource('users', UserController::class);
 
 
 /*********  start URL *********/
-Route::get('/greeting', function(){
-  return view('greeting');
-});
+// Route::get('/greeting', function(){
+//   return view('greeting');
+// });
 
-Route::get('about/{slug?}', [UserController::class, 'index1'])->name('about-us');
-Route::get('post/{post}/comment/{comment}', function($post, $comment) {
-  //
-})->name('post.comment');
+// Route::get('about/{slug?}', [UserController::class, 'index1'])->name('about-us');
+// Route::get('post/{post}/comment/{comment}', function($post, $comment) {
+//   //
+// })->name('post.comment');
 
 
 //$category = App\Models\Category::find(1);
@@ -372,17 +374,17 @@ Route::get('post/{post}/comment/{comment}', function($post, $comment) {
 
 
 /*********  start View *********/
-Route::get('/customer', function() {
-return view('components.customer');
-});
+// Route::get('/customer', function() {
+// return view('components.customer');
+// });
 
-Route::get('/main', function() {
-  return view('main');
-  });
+// Route::get('/main', function() {
+//   return view('main');
+//   });
 
-  Route::get('/welcome', function() {
-    return view('welcome');
-    });
+//   Route::get('/welcome', function() {
+//     return view('welcome');
+//     });
 
 // Route::get('/', function() {
 
@@ -506,9 +508,9 @@ Route::get('/main', function() {
 
 
 
-/*********  start  *********/
-
-/*********  end  *********/
+/*********  start Validation *********/
+Route::resource('posts', PostController::class);
+/*********  end  Validation *********/
 
 
 
