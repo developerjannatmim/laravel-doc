@@ -1,11 +1,12 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UrlController;
-use App\Http\Controllers\HomeController;
+// use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Cache;
 use App\Facades\Example\exampleFacade;
@@ -86,8 +87,8 @@ Route::get('/dashboard', function () {
 
 /*********  start Error Handling *********/
 
-Route::get('/users', [UserController::class, 'index']);
-Route::post('/users/search', [UserController::class, 'search'])->name('users.search');
+// Route::resource('/users', UserController::class);
+// Route::post('/users/search', [UserController::class, 'search'])->name('users.search');
 /*********  start Error Handling *********/
 
 /*********  start Response *********/
@@ -435,11 +436,11 @@ Route::post('/users/search', [UserController::class, 'search'])->name('users.sea
 //   //abort(404);
 // });
 
-Route::get('/users/{id}', [ UserController::class, 'show'])
-->missing(function (Request $request) {
-  return Redirect::route('dashboard');
-  //abort(404);
-});
+// Route::get('/users/{id}', [ UserController::class, 'show'])
+// ->missing(function (Request $request) {
+//   return Redirect::route('dashboard');
+//   //abort(404);
+// });
 
 // Route::get('/blog/{post}', [PostController::class, 'show'])
 //      ->missing(function (Request $request) {
@@ -526,21 +527,29 @@ Route::get('/users/{id}', [ UserController::class, 'show'])
 
 
 
-
 /*********  start Validation *********/
-Route::resource('posts', PostController::class);
+// Route::resource('posts', PostController::class);
 /*********  end  Validation *********/
-
 
 
 
 
 //************* Breeze packages
 
-Route::middleware('auth')->group(function () {
-  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__ . '/auth.php';
+
+
+//************* Validation 
+
+Route::get('/form', [HomeController::class, 'create']);
+Route::post('/form', [HomeController::class, 'store']);
+
+
+
+
