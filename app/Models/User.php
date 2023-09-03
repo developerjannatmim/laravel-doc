@@ -43,10 +43,10 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function getRouteKey(): mixed
-    {
-        return $this->slug;
-    }
+    // public function getRouteKey(): mixed
+    // {
+    //     return $this->slug;
+    // }
 
     public function hasRole()
     {

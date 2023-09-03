@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UrlController;
 use App\Http\Controllers\HomeController;
@@ -46,19 +47,19 @@ use Illuminate\Http\Request;
 
 // Route::get('/user',[UrlController::class, 'show']);
 
-Route::get('/',[UrlController::class, 'show'])->name('home');
-Route::get('/about',[UrlController::class, 'about'])->name('about');
-Route::get('/about/{slug}',[UrlController::class, 'index'])->name('about.slug');
-Route::get('post/{post}/comment/{comment}', function($post,$comment){
-  return 'post';
-})->name('post.comment');
+// Route::get('/',[UrlController::class, 'show'])->name('home');
+// Route::get('/about',[UrlController::class, 'about'])->name('about');
+//Route::get('/about/{slug}',[UrlController::class, 'index'])->name('about.slug');
+// Route::get('post/{post}/comment/{comment}', function($post,$comment){
+//   return 'post';
+// })->name('post.comment');
 
-Route::get('/secret', function(Request $request) {
-//   if (! $request->hasValidSignature()) {
-//     return 'home';
-// }
-  return 'This is a secret site';
-})->name('secret')->middleware('signed');
+// Route::get('/secret', function(Request $request) {
+// //   if (! $request->hasValidSignature()) {
+// //     return 'home';
+// // }
+//   return 'This is a secret site';
+// })->name('secret')->middleware('signed');
 /* URL Test End*/
 
 
@@ -67,13 +68,13 @@ Route::get('/secret', function(Request $request) {
 // Route::get('/', function () {
 //   return view('welcome');
 // });
-Route::get('/', function () {
-  return view('welcome');
-});
 
 Route::get('/dashboard', function () {
 	return view('dashboard');
 })->name('dashboard');
+
+
+
 
 
 /*********  start Response *********/
@@ -116,7 +117,7 @@ Route::get('/dashboard', function () {
 //   return redirect('home');
 // });
 
-Route::resource('users', UserController::class);
+// Route::resource('users', UserController::class);
 
 // Route::get('/home', function() {
 //   return redirect()->route('main');
@@ -273,10 +274,12 @@ Route::resource('users', UserController::class);
 //   dd($id->name);
 // });
 
-// Route::get('/users/{user:id}', function (User $user) {
-//   return $user; // slug means-: table's field name such as user table field name(id/name/email...)
+// Route::get('/users/{user:email}', function (User $user) {
+//   return $user; 
 // });
 
+
+// slug means-: table's field name such as user table field name(id/name/email...)
 // Route::get('/product-test', [ProductController::class, 'index']);
 
 // Route::get('/user', function () {
@@ -330,15 +333,18 @@ Route::resource('users', UserController::class);
 
 
 /*********  start URL *********/
-Route::get('/greeting', function(){
-  return view('greeting');
-});
+// Route::get('/greeting', function(){
+//   return view('greeting');
+// });
 
-Route::get('about/{slug?}', [UserController::class, 'index1'])->name('about-us');
-Route::get('post/{post}/comment/{comment}', function($post, $comment) {
-  //
-})->name('post.comment');
+// Route::get('about/{slug?}', [UserController::class, 'index1'])->name('about-us');
+// Route::get('post/{post}/comment/{comment}', function($post, $comment) {
+//   //
+// })->name('post.comment');
 
+//Route::get('test/{name}', [UserController::class, 'demo']);
+
+//$url = action([UserController::class, 'demo']);
 
 //$category = App\Models\Category::find(1);
 //dd(url('/category/{$category->id}'));
@@ -372,17 +378,17 @@ Route::get('post/{post}/comment/{comment}', function($post, $comment) {
 
 
 /*********  start View *********/
-Route::get('/customer', function() {
-return view('components.customer');
-});
+// Route::get('/customer', function() {
+// return view('components.customer');
+// });
 
-Route::get('/main', function() {
-  return view('main');
-  });
+// Route::get('/main', function() {
+//   return view('main');
+//   });
 
-  Route::get('/welcome', function() {
-    return view('welcome');
-    });
+//   Route::get('/welcome', function() {
+//     return view('welcome');
+//     });
 
 // Route::get('/', function() {
 
@@ -416,6 +422,12 @@ Route::get('/main', function() {
 //   //abort(404);
 // });
 
+Route::get('/users/{id}', [ UserController::class, 'show'])
+->missing(function (Request $request) {
+  return Redirect::route('dashboard');
+  //abort(404);
+});
+
 // Route::get('/blog/{post}', [PostController::class, 'show'])
 //      ->missing(function (Request $request) {
 // 		// customize the view to add search bar, featured blog
@@ -433,10 +445,6 @@ Route::get('/main', function() {
 
 // Route::get('/user/{id}', [ViewController::class, 'show']);
 /*********  end Controller *********/
-
-
-
-
 
 /*********  start Middleware *********/
 // Route::get('/user/{id}', function (string $id) {

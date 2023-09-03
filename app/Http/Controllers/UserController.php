@@ -38,6 +38,11 @@ class UserController extends Controller
         return 'all users from others';
     }
 
+    public function demo($name)
+    {
+        return 'Hello : ' . $name;
+    }
+
     public function getalluser() // http response...
     {
         //return redirect()->route('index');
