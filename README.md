@@ -148,3 +148,19 @@ Information:
 
 ## Note:
 1. error kono shomossa ke nirdesh kore, ja code er moddhe vul hole dekha dey. kintu exception holo emon shomossa ja applicaton runtime and compile time ee ashte pare.
+
+
+## ERROR Handeling
+Information:
+1. report() is used if you want to do some additional logging - send error to BugSnag, email, Slack etc.
+
+2. render() is used if you want to redirect back with error or return HTTP response (like your own Blade file) directly from Exception class.
+
+3. some error messages are here,
+if ($e instanceof ModelNotFoundException) {
+    $e = new NotFoundHttpException($e->getMessage(), $e);
+} elseif ($e instanceof AuthorizationException) {
+    $e = new HttpException(403, $e->getMessage());
+} elseif ($e instanceof TokenMismatchException) {
+    $e = new HttpException(419, $e->getMessage());
+}

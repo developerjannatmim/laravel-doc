@@ -44,22 +44,21 @@ use Illuminate\Http\Request;
 
 
 /* URL Test Start*/
-
 // Route::get('/user',[UrlController::class, 'show']);
 
-Route::get('/',[UrlController::class, 'show'])->name('home');
-Route::get('/about',[UrlController::class, 'about'])->name('about');
-Route::get('/about/{slug}',[UrlController::class, 'index'])->name('about.slug');
-Route::get('post/{post}/comment/{comment}', function($post,$comment){
-  return 'post';
-})->name('post.comment');
+// Route::get('/',[UrlController::class, 'show'])->name('home');
+// Route::get('/about',[UrlController::class, 'about'])->name('about');
+// Route::get('/about/{slug}',[UrlController::class, 'index'])->name('about.slug');
+// Route::get('post/{post}/comment/{comment}', function($post,$comment){
+//   return 'post';
+// })->name('post.comment');
 
-Route::get('/secret', function(Request $request) {
-//   if (! $request->hasValidSignature()) {
-//     return 'home';
-// }
-  return 'This is a secret site';
-})->name('secret')->middleware('signed');
+// Route::get('/secret', function(Request $request) {
+// //   if (! $request->hasValidSignature()) {
+// //     return 'home';
+// // }
+//   return 'This is a secret site';
+// })->name('secret')->middleware('signed');
 /* URL Test End*/
 
 
@@ -69,14 +68,27 @@ Route::get('/secret', function(Request $request) {
 //   return view('welcome');
 // });
 Route::get('/', function () {
-  dd(compact());
   return view('welcome');
+  // Log::emergency('this is your age: '.rand(1,20));
+  // Log::alert('this is your age: '.rand(1,20));
+  // Log::critical('this is your age: '.rand(1,20));
+  // Log::error('this is your age: '.rand(1,20));
+  // Log::warning('this is your age: '.rand(1,20));
+  // Log::notice('this is your age: '.rand(1,20));
+  // Log::info('this is your age: '.rand(1,20));
+  // Log::debug('this is your age: '.rand(1,20));
 });
 
 Route::get('/dashboard', function () {
 	return view('dashboard');
 })->name('dashboard');
 
+
+/*********  start Error Handling *********/
+
+Route::get('/users', [UserController::class, 'index']);
+Route::post('/users/search', [UserController::class, 'search'])->name('users.search');
+/*********  start Error Handling *********/
 
 /*********  start Response *********/
 // Route::get('/', function () {
