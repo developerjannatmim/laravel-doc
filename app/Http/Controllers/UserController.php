@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\MyCustomException;
+use App\Exceptions\UserNotFoundException;
 use App\Http\Controllers\Controller;
+use App\Services\UsersService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 //test URL
 use Illuminate\Support\Facades\URL;
@@ -14,20 +19,41 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function autocompleteSearch(Request $request)
+
+    // public function search(Request $request) //general exception by using controller....
+    // {
+    //     try
+    //     {
+    //         $user = User::findOrFail($request->input('id'));
+    //     }catch (ModelNotFoundException $exception)
+    //     {
+    //         return back()->withError('user not found')->withInput();
+    //     }
+    //     return view('users.search', compact('user'));
+	// }
+
+    private $userService; //exception by using custom UsersService class...
+
+    public function __construct(UsersService $userService)
     {
-			if($request->filled('search')){
-				$users = User::search($request->search)->get();
-			}else{
-				$users = User::get();
-			}
-			return view('users.index', compact('users'));
-            
-		}
+        $this->userService = $userService;
+    }
+
+    public function search(Request $request)
+    {
+        try{
+            $user = $this->userService->search($request->input('id'));
+        }catch (ModelNotFoundException $e)
+        {
+            return back()->withError($e->getMessage())->withInput();
+        }
+        return view('users.search', compact('user'));
+    }
 
     public function index()
     {
-        $users = User::latest()->paginate(5);
+        //throw new MyCustomException();
+        $users = User::orderBy('id', 'asc')->paginate(5);
         return view('users.index', compact('users'))
         ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -103,6 +129,8 @@ class UserController extends Controller
         return redirect()->route('users.index')
         ->with('Success', 'User updated successfully');
         }
+
+        \Log::channel('userupdate')->info('user updated success');
         return back()->withInput();
 
     }

@@ -35,6 +35,4 @@ class UrlController extends Controller
     return view('example');
   }
 
-  public 
-
 }

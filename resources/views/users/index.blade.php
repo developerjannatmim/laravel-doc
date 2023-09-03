@@ -10,19 +10,24 @@
             <a class="btn btn-success" href="{{ route('users.create') }}">Create New User</a>
         </div>
 				<div class="container mt-5">
+                    <h3>Search User By ID</h3>
+                    @if (session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
 					<div classs="form-group">
-						<form method="GET">
+						<form action="{{ route('users.search') }}" method="POST">
+                            @csrf
 							<div class="input-group mb-3">
 								<input
 									type="text"
-									name="search"
-									value="{{ request()->get('search') }}"
+                                    id="id"
+									name="id"
+									value="{{ old('id') }}"
 									class="form-control"
-									placeholder="Search..."
+									placeholder="User ID"
 									aria-label="Search"
-									aria-describedby="button-addon2">
-								<button class="btn btn-success" type="submit" id="button-addon2">Search</button>
-								{{--<a class="btn btn-success" href="{{ route('users.show') }}">Search</a>--}}
+									>
+								<button class="btn btn-info" type="submit">Search</button>
 							</div>
 					</form>
 					</div>
@@ -44,7 +49,7 @@
         </tr>
         @foreach ($users as $user)
         <tr>
-            <td>{{ ++$i }}</td>
+            <td>{{ $user->id }}</td>
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td>

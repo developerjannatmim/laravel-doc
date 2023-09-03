@@ -8,6 +8,7 @@ use Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 use App\Exceptions\CustomeException;
+use App\Exceptions\MyCustomException;
 
 class Handler extends ExceptionHandler
 {
@@ -22,6 +23,10 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
+    protected $dontReport = [
+        MyCustomException::class,
+    ];
+
     /**
      * Register the exception handling callbacks for the application.
      */
@@ -34,11 +39,21 @@ class Handler extends ExceptionHandler
         // });
 
         $this->renderable(function(NotFoundHttpException $e) {
-            return response()->error('Object not found', 404);
-            // return response()->json([
-            //     'success' => false,
-            //     'error' => 'Object not found',
-            // ], status:404);
+            //return response()->error('Object not found', 404);
+            return response()->json([
+                'success' => false,
+                'error' => 'Object not found',
+            ], status:404);
         });
     }
+
+		public function render($request , Throwable $exception)
+		{
+			if($this->isHttpException($exception))
+			{
+				return response()->view('errors.404');
+			}else{
+				return response()->view('errors.402');
+			}
+		}
 }

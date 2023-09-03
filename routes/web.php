@@ -44,12 +44,11 @@ use Illuminate\Http\Request;
 
 
 /* URL Test Start*/
-
 // Route::get('/user',[UrlController::class, 'show']);
 
 // Route::get('/',[UrlController::class, 'show'])->name('home');
 // Route::get('/about',[UrlController::class, 'about'])->name('about');
-//Route::get('/about/{slug}',[UrlController::class, 'index'])->name('about.slug');
+// Route::get('/about/{slug}',[UrlController::class, 'index'])->name('about.slug');
 // Route::get('post/{post}/comment/{comment}', function($post,$comment){
 //   return 'post';
 // })->name('post.comment');
@@ -68,14 +67,28 @@ use Illuminate\Http\Request;
 // Route::get('/', function () {
 //   return view('welcome');
 // });
+Route::get('/', function () {
+  return view('welcome');
+  // Log::emergency('this is your age: '.rand(1,20));
+  // Log::alert('this is your age: '.rand(1,20));
+  // Log::critical('this is your age: '.rand(1,20));
+  // Log::error('this is your age: '.rand(1,20));
+  // Log::warning('this is your age: '.rand(1,20));
+  // Log::notice('this is your age: '.rand(1,20));
+  // Log::info('this is your age: '.rand(1,20));
+  // Log::debug('this is your age: '.rand(1,20));
+});
 
 Route::get('/dashboard', function () {
 	return view('dashboard');
 })->name('dashboard');
 
 
+/*********  start Error Handling *********/
 
-
+Route::get('/users', [UserController::class, 'index']);
+Route::post('/users/search', [UserController::class, 'search'])->name('users.search');
+/*********  start Error Handling *********/
 
 /*********  start Response *********/
 // Route::get('/', function () {
@@ -514,9 +527,9 @@ Route::get('/users/{id}', [ UserController::class, 'show'])
 
 
 
-/*********  start  *********/
-
-/*********  end  *********/
+/*********  start Validation *********/
+Route::resource('posts', PostController::class);
+/*********  end  Validation *********/
 
 
 
