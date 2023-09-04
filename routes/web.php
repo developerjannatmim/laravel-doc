@@ -1,11 +1,12 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UrlController;
-use App\Http\Controllers\HomeController;
+// use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Cache;
 use App\Facades\Example\exampleFacade;
@@ -99,8 +100,8 @@ Route::get('/dashboard', function () {
 
 /*********  start Error Handling *********/
 
-Route::get('/users', [UserController::class, 'index']);
-Route::post('/users/search', [UserController::class, 'search'])->name('users.search');
+// Route::resource('/users', UserController::class);
+// Route::post('/users/search', [UserController::class, 'search'])->name('users.search');
 /*********  start Error Handling *********/
 
 /*********  start Response *********/
@@ -143,7 +144,7 @@ Route::post('/users/search', [UserController::class, 'search'])->name('users.sea
 //   return redirect('home');
 // });
 
-//Route::resource('users', UserController::class);
+// Route::resource('users', UserController::class);
 
 // Route::get('/home', function() {
 //   return redirect()->route('main');
@@ -300,10 +301,12 @@ Route::post('/users/search', [UserController::class, 'search'])->name('users.sea
 //   dd($id->name);
 // });
 
-// Route::get('/users/{user:id}', function (User $user) {
-//   return $user; // slug means-: table's field name such as user table field name(id/name/email...)
+// Route::get('/users/{user:email}', function (User $user) {
+//   return $user; 
 // });
 
+
+// slug means-: table's field name such as user table field name(id/name/email...)
 // Route::get('/product-test', [ProductController::class, 'index']);
 
 // Route::get('/user', function () {
@@ -366,6 +369,9 @@ Route::post('/users/search', [UserController::class, 'search'])->name('users.sea
 //   //
 // })->name('post.comment');
 
+//Route::get('test/{name}', [UserController::class, 'demo']);
+
+//$url = action([UserController::class, 'demo']);
 
 //$category = App\Models\Category::find(1);
 //dd(url('/category/{$category->id}'));
@@ -443,6 +449,12 @@ Route::post('/users/search', [UserController::class, 'search'])->name('users.sea
 //   //abort(404);
 // });
 
+// Route::get('/users/{id}', [ UserController::class, 'show'])
+// ->missing(function (Request $request) {
+//   return Redirect::route('dashboard');
+//   //abort(404);
+// });
+
 // Route::get('/blog/{post}', [PostController::class, 'show'])
 //      ->missing(function (Request $request) {
 // 		// customize the view to add search bar, featured blog
@@ -460,10 +472,6 @@ Route::post('/users/search', [UserController::class, 'search'])->name('users.sea
 
 // Route::get('/user/{id}', [ViewController::class, 'show']);
 /*********  end Controller *********/
-
-
-
-
 
 /*********  start Middleware *********/
 // Route::get('/user/{id}', function (string $id) {
@@ -532,21 +540,37 @@ Route::post('/users/search', [UserController::class, 'search'])->name('users.sea
 
 
 
-
 /*********  start Validation *********/
+<<<<<<< HEAD
 //Route::resource('posts', PostController::class);
+=======
+// Route::resource('posts', PostController::class);
+>>>>>>> d4c67941b4434a35adf26db61c7b83912cb05222
 /*********  end  Validation *********/
-
 
 
 
 
 //************* Breeze packages
 
-Route::middleware('auth')->group(function () {
-  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
+<<<<<<< HEAD
 require __DIR__ . '/auth.php';
+=======
+require __DIR__ . '/auth.php';
+
+
+//************* Validation 
+
+Route::get('/form', [HomeController::class, 'create']);
+Route::post('/form', [HomeController::class, 'store']);
+
+
+
+
+>>>>>>> d4c67941b4434a35adf26db61c7b83912cb05222

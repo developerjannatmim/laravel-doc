@@ -46,7 +46,7 @@ class PostController extends Controller
     //   ->with('Success', 'Post created successfully.');
 
     //Post::create($validated);
-    //Product::create($request->validated()); //PostStoreRequest file ee rules array er moddhe validation rules define korte evabe korbo
+    Product::create($request->validated()); //PostStoreRequest file ee rules array er moddhe validation rules define korte evabe korbo
 
     ///or,
 
