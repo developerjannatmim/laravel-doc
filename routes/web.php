@@ -541,11 +541,7 @@ Route::get('/dashboard', function () {
 
 
 /*********  start Validation *********/
-<<<<<<< HEAD
-//Route::resource('posts', PostController::class);
-=======
 // Route::resource('posts', PostController::class);
->>>>>>> d4c67941b4434a35adf26db61c7b83912cb05222
 /*********  end  Validation *********/
 
 
@@ -559,9 +555,6 @@ Route::get('/dashboard', function () {
 //   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
-<<<<<<< HEAD
-require __DIR__ . '/auth.php';
-=======
 require __DIR__ . '/auth.php';
 
 
@@ -573,4 +566,3 @@ Route::post('/form', [HomeController::class, 'store']);
 
 
 
->>>>>>> d4c67941b4434a35adf26db61c7b83912cb05222
