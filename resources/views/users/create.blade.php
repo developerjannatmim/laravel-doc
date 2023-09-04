@@ -35,8 +35,20 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>email:</strong>
+                <strong>Email:</strong>
                 <textarea class="form-control" name="email" placeholder="Email"></textarea>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Age:</strong>
+                <textarea class="form-control" name="age" placeholder="Age"></textarea>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>City:</strong>
+                <textarea class="form-control" name="city" placeholder="City"></textarea>
             </div>
         </div>
 				<div class="col-xs-12 col-sm-12 col-md-12">

@@ -45,6 +45,8 @@
             <th>No</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Age</th>
+            <th>City</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($users as $user)
@@ -52,6 +54,8 @@
             <td>{{ $user->id }}</td>
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
+            <td>{{ $user->age }}</td>
+            <td>{{ $user->city }}</td>
             <td>
                 <form action="{{ route('users.destroy',$user->id) }}" method="POST">
 

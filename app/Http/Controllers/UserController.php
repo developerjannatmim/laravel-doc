@@ -10,133 +10,236 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 //test URL
 use Illuminate\Support\Facades\URL;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+	// /**
+	//  * Display a listing of the resource.
+	//  */
 
-    // public function search(Request $request) //general exception by using controller....
-    // {
-    //     try
-    //     {
-    //         $user = User::findOrFail($request->input('id'));
-    //     }catch (ModelNotFoundException $exception)
-    //     {
-    //         return back()->withError('user not found')->withInput();
-    //     }
-    //     return view('users.search', compact('user'));
+	public function newUser()
+	{
+		$newUser = DB::table('users')->insertGetId(
+			[
+				'name' => 'abbu',
+				'email' => 'ab@gmail.com',
+				'age' => 34,
+				'city' => 'jessore',
+				'password' => 12345678
+			]
+		);
+		// return response()->json([
+		// 	$newUser,
+		// ]);
+
+		if($newUser)
+		{
+		    echo "<h1>data added successfully.</h1>";
+		}else{
+		    echo "<h1>data added failed.</h1>";
+		}
+	}
+
+	public function updateUser()
+	{
+		$updateUser = DB::table('users')
+			->updateOrInsert([
+				'name' => 'abbu',
+				'email' => 'abbu@gmail.com',
+				'age' => 33,
+				'city' => 'jessore',
+				'password' => 12345678,
+			],
+			['id' => 6]
+		);
+
+		if ($updateUser) {
+			echo "<h1>data updated successfully.</h1>";
+		} else {
+			echo "<h1>data updated failed.</h1>";
+		}
+
+		// return response()->json([
+		//     'user updated' => $updateUser,
+		// ]);
+	}
+
+	public function deleteUser(string $id)
+	{
+		$deleteUser = DB::table('users')
+		->where('id', $id)
+		->delete();
+
+		if ($deleteUser){
+			return redirect()->back()->with(['message' => 'user deleted successfully']);
+		}else{
+			return 'user not found';
+		}
+
+		// if ($deleteUser) {
+		// 	echo "<h1>data deleted successfully.</h1>";
+		// } else {
+		// 	echo "<h1>data deleted failed.</h1>";
+		// }
+
+	// 	return response()->json([
+	// 	'user deleted' => $deleteUser,
+	// ]);
+
+	}
+
+	public function showUsers()
+	{
+	    $users = DB::table('users')->get();
+	    return view('allusers', ['data' => $users]);
+	    // return response()->json([
+	    //     $users,
+	    // ]);
+	}
+
+	public function singleUser(string $id)
+	{
+	    $user = DB::table('users')->where('id', $id)->get();
+	    //return $user;
+	    return view('singleuser', ['data' => $user]);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// // public function search(Request $request) //general exception by using controller....
+	// // {
+	// //     try
+	// //     {
+	// //         $user = User::findOrFail($request->input('id'));
+	// //     }catch (ModelNotFoundException $exception)
+	// //     {
+	// //         return back()->withError('user not found')->withInput();
+	// //     }
+	// //     return view('users.search', compact('user'));
+	// // }
+
+	// private $userService; //exception by using custom UsersService class...
+
+	// public function __construct(UsersService $userService)
+	// {
+	//     $this->userService = $userService;
 	// }
 
-    private $userService; //exception by using custom UsersService class...
+	// public function search(Request $request)
+	// {
+	//     try{
+	//         $user = $this->userService->search($request->input('id'));
+	//     }catch (ModelNotFoundException $e)
+	//     {
+	//         return back()->withError($e->getMessage())->withInput();
+	//     }
+	//     return view('users.search', compact('user'));
+	// }
 
-    public function __construct(UsersService $userService)
-    {
-        $this->userService = $userService;
-    }
+	// public function index()
+	// {
+	//     //throw new MyCustomException();
+	//     $users = User::orderBy('id', 'asc')->paginate(5);
+	//     return view('users.index', compact('users'))
+	//     ->with('i', (request()->input('page', 1) - 1) * 5);
+	// }
 
-    public function search(Request $request)
-    {
-        try{
-            $user = $this->userService->search($request->input('id'));
-        }catch (ModelNotFoundException $e)
-        {
-            return back()->withError($e->getMessage())->withInput();
-        }
-        return view('users.search', compact('user'));
-    }
+	// public function index1(Request $request, $slug) // http response...
 
-    public function index()
-    {
-        //throw new MyCustomException();
-        $users = User::orderBy('id', 'asc')->paginate(5);
-        return view('users.index', compact('users'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);
-    }
+	// {
+	//     return 'all users from others';
+	// }
 
-    public function index1(Request $request, $slug) // http response...
+	// public function getalluser() // http response...
+	// {
+	//     //return redirect()->route('index');
+	//     //return to_route('index');
+	//     //return redirect('index');
+	//     return redirect()->away('https://www.google.com');
+	// }
+	// /**
+	//  * Show the form for creating a new resource.
+	//  */
+	// public function create()
+	// {
+	//     return view('users.create');
+	// }
 
-    {
-        return 'all users from others';
-    }
+	// /**
+	//  * Store a newly created resource in storage.
+	//  */
+	// public function store(Request $request)
+	// {
+	//     $request->validate([
+	//         'name' => 'required',
+	//         'email' => 'required',
+	//         'password' => 'required',
+	//     ]);
+	//     User::create($request->all());
+	//     return redirect()->route('users.index')
+	//     ->with('Success', 'User created successfully.');
+	// }
 
-    public function getalluser() // http response...
-    {
-        //return redirect()->route('index');
-        //return to_route('index');
-        //return redirect('index');
-        return redirect()->away('https://www.google.com');
-    }
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('users.create');
-    }
+	// /**
+	//  * Display the specified resource.
+	//  */
+	// public function show(User $user)
+	// {
+	//     return view('users.show', compact('user'));
+	// }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-        ]);
-        User::create($request->all());
-        return redirect()->route('users.index')
-        ->with('Success', 'User created successfully.');
-    }
+	// /**
+	//  * Show the form for editing the specified resource.
+	//  */
+	// public function edit(User $user)
+	// {
+	//     return view('users.edit', compact('user'));
+	// }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(User $user)
-    {
-        return view('users.show', compact('user'));
-    }
+	// /**
+	//  * Update the specified resource in storage.
+	//  */
+	// public function update(Request $request, User $user)
+	// {
+	//     $request->validate([
+	//         'name' => 'required|max:5',
+	//         'email' => 'required|email',
+	//     ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(User $user)
-    {
-        return view('users.edit', compact('user'));
-    }
+	//     if( $user->update($request->all()) ) {
+	//     return redirect()->route('users.index')
+	//     ->with('Success', 'User updated successfully');
+	//     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, User $user)
-    {
-        $request->validate([
-            'name' => 'required|max:5',
-            'email' => 'required|email',
-        ]);
+	//     \Log::channel('userupdate')->info('user updated success');
+	//     return back()->withInput();
 
-        if( $user->update($request->all()) ) {
-        return redirect()->route('users.index')
-        ->with('Success', 'User updated successfully');
-        }
+	// }
 
-        \Log::channel('userupdate')->info('user updated success');
-        return back()->withInput();
+	// /**
+	//  * Remove the specified resource from storage.
+	//  */
+	// public function destroy(User $user)
+	// {
+	//     $user->delete();
+	//     return redirect()->route('users.index')
+	//     ->with('success','User deleted successfully');
+	// }
 
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(User $user)
-    {
-        $user->delete();
-        return redirect()->route('users.index')
-        ->with('success','User deleted successfully');
-    }
 }

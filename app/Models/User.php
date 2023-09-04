@@ -60,4 +60,7 @@ class User extends Authenticatable
     //         'email' => $this->email
     //     ];
     // }
+
+    //public $timestamps = false;
+
 }

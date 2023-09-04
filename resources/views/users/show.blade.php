@@ -25,5 +25,17 @@
                 {{ $user->email }}
             </div>
         </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Age:</strong>
+                {{ $user->age }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>City:</strong>
+                {{ $user->city }}
+            </div>
+        </div>
     </div>
 @endsection

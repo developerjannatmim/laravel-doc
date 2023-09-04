@@ -164,3 +164,7 @@ if ($e instanceof ModelNotFoundException) {
 } elseif ($e instanceof TokenMismatchException) {
     $e = new HttpException(419, $e->getMessage());
 }
+
+## Database: Query Builder
+Information:
+1. truncate() method, all data delete korar por auto increment id column k reset kore dey. orthat, next data add hobe 1 no id theke.

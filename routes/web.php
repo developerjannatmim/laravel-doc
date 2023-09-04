@@ -41,7 +41,19 @@ use Illuminate\Http\Request;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+/*********  start Database: Query Builder *********/
 
+Route::get('user', [UserController::class, 'showUsers'])->name('view.allusers');
+
+Route::get('/user/{id}', [UserController::class, 'singleUser'])->name('view.singleuser');
+
+Route::get('/update', [UserController::class, 'updateUser']);
+
+Route::get('/add', [UserController::class, 'newUser']);
+
+Route::get('/delete/{id}', [UserController::class, 'deleteUser'])->name('view.deleteuser');
+
+/*********  start Database: Query Builder *********/
 
 /* URL Test Start*/
 // Route::get('/user',[UrlController::class, 'show']);
@@ -69,6 +81,7 @@ use Illuminate\Http\Request;
 // });
 Route::get('/', function () {
   return view('welcome');
+
   // Log::emergency('this is your age: '.rand(1,20));
   // Log::alert('this is your age: '.rand(1,20));
   // Log::critical('this is your age: '.rand(1,20));
@@ -80,7 +93,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-	return view('dashboard');
+  return view('dashboard');
 })->name('dashboard');
 
 
@@ -130,7 +143,7 @@ Route::post('/users/search', [UserController::class, 'search'])->name('users.sea
 //   return redirect('home');
 // });
 
-Route::resource('users', UserController::class);
+//Route::resource('users', UserController::class);
 
 // Route::get('/home', function() {
 //   return redirect()->route('main');
@@ -521,7 +534,7 @@ Route::resource('users', UserController::class);
 
 
 /*********  start Validation *********/
-Route::resource('posts', PostController::class);
+//Route::resource('posts', PostController::class);
 /*********  end  Validation *********/
 
 
