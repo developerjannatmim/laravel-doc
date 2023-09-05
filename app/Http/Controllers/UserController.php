@@ -96,18 +96,24 @@ class UserController extends Controller
 
 	public function showUsers()
 	{
-	    $users = DB::table('users')->get();
-	    return view('allusers', ['data' => $users]);
-	    // return response()->json([
-	    //     $users,
-	    // ]);
+	    //$users = DB::table('users')->addSelect("name", "age")->get();
+	    //return view('allusers', ['data' => $users]);
+
+			$users = DB::table('users')
+			->join('posts', 'users.id', '=' , 'posts.user_id')
+			->get();
+		
+			return response()->json([
+		  $users,
+	    ]);
+
 	}
 
 	public function singleUser(string $id)
 	{
-	    $user = DB::table('users')->where('id', $id)->get();
-	    //return $user;
-	    return view('singleuser', ['data' => $user]);
+	    $user = DB::table('users')->where('id', $id)->first();
+	    return $user;
+	    //return view('singleuser', ['data' => $user]);
 	}
 
 
@@ -142,33 +148,12 @@ class UserController extends Controller
 	//     $this->userService = $userService;
 	// }
 
-<<<<<<< HEAD
-	// public function search(Request $request)
-	// {
-	//     try{
-	//         $user = $this->userService->search($request->input('id'));
-	//     }catch (ModelNotFoundException $e)
-	//     {
-	//         return back()->withError($e->getMessage())->withInput();
-	//     }
-	//     return view('users.search', compact('user'));
-	// }
-
-	// public function index()
-	// {
-	//     //throw new MyCustomException();
-	//     $users = User::orderBy('id', 'asc')->paginate(5);
-	//     return view('users.index', compact('users'))
-	//     ->with('i', (request()->input('page', 1) - 1) * 5);
-	// }
-=======
     // private $userService; //exception by using custom UsersService class...
 
     // public function __construct(UsersService $userService)
     // {
     //     $this->userService = $userService;
     // }
->>>>>>> d4c67941b4434a35adf26db61c7b83912cb05222
 
 	// public function index1(Request $request, $slug) // http response...
 
@@ -176,86 +161,6 @@ class UserController extends Controller
 	//     return 'all users from others';
 	// }
 
-<<<<<<< HEAD
-	// public function getalluser() // http response...
-	// {
-	//     //return redirect()->route('index');
-	//     //return to_route('index');
-	//     //return redirect('index');
-	//     return redirect()->away('https://www.google.com');
-	// }
-	// /**
-	//  * Show the form for creating a new resource.
-	//  */
-	// public function create()
-	// {
-	//     return view('users.create');
-	// }
-
-	// /**
-	//  * Store a newly created resource in storage.
-	//  */
-	// public function store(Request $request)
-	// {
-	//     $request->validate([
-	//         'name' => 'required',
-	//         'email' => 'required',
-	//         'password' => 'required',
-	//     ]);
-	//     User::create($request->all());
-	//     return redirect()->route('users.index')
-	//     ->with('Success', 'User created successfully.');
-	// }
-
-	// /**
-	//  * Display the specified resource.
-	//  */
-	// public function show(User $user)
-	// {
-	//     return view('users.show', compact('user'));
-	// }
-
-	// /**
-	//  * Show the form for editing the specified resource.
-	//  */
-	// public function edit(User $user)
-	// {
-	//     return view('users.edit', compact('user'));
-	// }
-
-	// /**
-	//  * Update the specified resource in storage.
-	//  */
-	// public function update(Request $request, User $user)
-	// {
-	//     $request->validate([
-	//         'name' => 'required|max:5',
-	//         'email' => 'required|email',
-	//     ]);
-
-	//     if( $user->update($request->all()) ) {
-	//     return redirect()->route('users.index')
-	//     ->with('Success', 'User updated successfully');
-	//     }
-
-	//     \Log::channel('userupdate')->info('user updated success');
-	//     return back()->withInput();
-
-	// }
-
-	// /**
-	//  * Remove the specified resource from storage.
-	//  */
-	// public function destroy(User $user)
-	// {
-	//     $user->delete();
-	//     return redirect()->route('users.index')
-	//     ->with('success','User deleted successfully');
-	// }
-
-
-}
-=======
     // public function index1(Request $request, $slug) // http response...
 
     // {
@@ -345,10 +250,9 @@ class UserController extends Controller
 
     //Validation
 
-    public function store(StorePostRequest $request)
-    {
-        User::create($request->all());
-        return redirect('welcome')->with('success', 'successfull');
-    }
+    // public function store(StorePostRequest $request)
+    // {
+    //     User::create($request->all());
+    //     return redirect('welcome')->with('success', 'successfull');
+    // }
 }
->>>>>>> d4c67941b4434a35adf26db61c7b83912cb05222

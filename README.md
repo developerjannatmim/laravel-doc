@@ -168,3 +168,7 @@ if ($e instanceof ModelNotFoundException) {
 ## Database: Query Builder
 Information:
 1. truncate() method, all data delete korar por auto increment id column k reset kore dey. orthat, next data add hobe 1 no id theke.
+
+2. plunk() specipic colum er shob data dey. r plunk() method maximum 2ta param except kore.
+
+3. distinct() method 
