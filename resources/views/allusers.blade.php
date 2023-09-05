@@ -9,6 +9,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+    {{-- <style>
+      nav .w-5{
+        display: none;
+      }
+    </style> --}}
   </head>
   <body>
     <div class="container">
@@ -30,6 +35,8 @@
                         <th>Age</th>
                         <th>City</th>
                         <th>View</th>
+                        <th>Delete</th>
+                        <th>Update</th>
                     </tr>
                     @foreach ($data as $user)
                     <tr class="">
@@ -40,11 +47,23 @@
                         <td>{{ $user->city }}</td>
                         <td>
                           <a href="{{ route('view.singleuser', $user->id) }}" class="btn btn-primary">View</a>
+                        </td>
+                        <td>
                           <a href="{{ route('view.deleteuser', $user->id) }}" class="btn btn-danger">Delete</a>
+                        </td>
+                        <td>
+                          <a href="#" class="btn btn-warning">Update</a>
                         </td>
                     </tr>
                     @endforeach
                 </table>
+                <div>
+                  {{ $data->links() }}
+                </div>
+                {{-- <div>
+                  total data: {{$data->total() }} <br>
+                  Current Page: {{$data->currentPage() }}
+                </div> --}}
             </div>
         </div>
     </div>

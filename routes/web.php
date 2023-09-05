@@ -48,11 +48,11 @@ Route::get('user', [UserController::class, 'showUsers'])->name('view.allusers');
 
 Route::get('/user/{id}', [UserController::class, 'singleUser'])->name('view.singleuser');
 
-Route::get('/update', [UserController::class, 'updateUser']);
-
 Route::get('/add', [UserController::class, 'newUser']);
 
 Route::get('/delete/{id}', [UserController::class, 'deleteUser'])->name('view.deleteuser');
+
+Route::resource('posts', PostController::class);
 
 /*********  start Database: Query Builder *********/
 
@@ -541,7 +541,7 @@ Route::get('/dashboard', function () {
 
 
 /*********  start Validation *********/
-// Route::resource('posts', PostController::class);
+//Route::resource('posts', PostController::class);
 /*********  end  Validation *********/
 
 
@@ -549,16 +549,16 @@ Route::get('/dashboard', function () {
 
 //************* Breeze packages
 
-// Route::middleware('auth')->group(function () {
-//   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
+Route::middleware('auth')->group(function () {
+  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 require __DIR__ . '/auth.php';
 
 
-//************* Validation 
+//************* Validation
 
 Route::get('/form', [HomeController::class, 'create']);
 Route::post('/form', [HomeController::class, 'store']);

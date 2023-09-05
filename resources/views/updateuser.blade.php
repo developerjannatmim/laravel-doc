@@ -17,17 +17,26 @@
                 <div class="btn">
                     <a href="{{ route('view.allusers') }}" class="btn btn-primary">Back</a>
                 </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h1 class="card-title">Single User</h1>
-                        @foreach ($data as $user)
-                            <p><b>User Name: </b>{{$user->name}}</p>
-                            <p><b>User Email: </b>{{$user->email}}</p>
-                            <p><b>User Age: </b>{{$user->age}}</p>
-                            <p><b>User City: </b>{{$user->city}}</p>
-                        @endforeach
+                <form class="form-group" action="">
+									@csrf
+                    <div>
+                      <label for="name">Name</label>
+											<input type="text" name="name" class="form-control" value="{{ old('name') }}"/>
                     </div>
-                </div>
+										<div>
+                      <label for="email">Email</label>
+											<input type="text" name="email" class="form-control" value="{{ old('email') }}"/>
+                    </div>
+										<div>
+                      <label for="age">Age</label>
+											<input type="text" name="age" class="form-control" value="{{ old('age') }}"/>
+                    </div>
+										<div>
+                      <label for="city">City</label>
+											<input type="text" name="city" class="form-control" value="{{ old('city') }}"/>
+                    </div>
+										<button class="btn btn-primary" type="submit">Update</button>
+                </form>
             </div>
         </div>
     </div>

@@ -31,16 +31,9 @@
           <div class="form-group">
             <strong>Title:</strong>
             <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" placeholder="Title" value="{{ old('title') }}">
-            {{-- @error('title')
-              <div class="alert alert-danger">{{ $message }}</div>
-            @enderror --}}
-            {{-- <div class="error">
-              @error('title')
-              <span class="alert alert-danger">{{ $message }}</span>
-              @enderror
-            </div> --}}
           </div>
         </div>
+
         <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="form-group">
             <strong>Body:</strong>
@@ -48,6 +41,7 @@
             <input type="hidden" name="publish_at" />
           </div>
         </div>
+
         <div class="col-xs-12 col-sm-12 col-md-12 mt-3">
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>

@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="row">
+    @if (session('success'))
+        <div class="alert alert-success">{{session('success')}}</div>
+    @endif
     <div class="col-lg-12 mb-3">
         <div class="pull-left">
             <h2>Laravel 10 CRUD Example</h2>

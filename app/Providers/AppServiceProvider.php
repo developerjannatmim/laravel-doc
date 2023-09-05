@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Facades\Information\Info;
@@ -53,6 +54,10 @@ class AppServiceProvider extends ServiceProvider
    */
   public function boot(): void
   {
+
+    Paginator::useBootstrapFive();
+    //Paginator::useBootstrapFour();
+
     Response::macro('success', function($data) {
       return response()->json([
         'success' => true,
