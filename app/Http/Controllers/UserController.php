@@ -260,6 +260,25 @@ class UserController extends Controller
 	//     ->with('success','User deleted successfully');
 	// }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 	//Validation
 
 	// public function store(StorePostRequest $request)

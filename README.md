@@ -149,6 +149,9 @@ Information:
 ## Note:
 1. error kono shomossa ke nirdesh kore, ja code er moddhe vul hole dekha dey. kintu exception holo emon shomossa ja applicaton runtime and compile time ee ashte pare.
 
+2. laravel login/registration route kaj na korle,
+****** Works for me - Added in package.json "scripts": { "dev": "vite", "build": "vite build" } and "devDependencies" : { "vite": "^4.0.0" } then run commands npm install , npm i laravel-vite-plugin, 
+npm run dev ******
 
 ## ERROR Handeling
 Information:

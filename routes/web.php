@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\PublicController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\StudentController;
+
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -7,7 +12,6 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UrlController;
 // use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Cache;
 use App\Facades\Example\exampleFacade;
 use App\Facades\Information\InfoFacade;
@@ -53,6 +57,31 @@ Route::get('/add', [UserController::class, 'newUser']);
 Route::get('/delete/{id}', [UserController::class, 'deleteUser'])->name('view.deleteuser');
 
 Route::resource('posts', PostController::class);
+
+//*****students
+Route::get('/students', [StudentController::class, 'index']);
+Route::get('/create-student', [StudentController::class, 'createStudent']);
+Route::get('/show/{id}', [StudentController::class, 'showStudent'])->name('students.show');
+Route::get('/edit/{id}', [StudentController::class, 'editStudent'])->name('students.edit');
+
+//*****cities
+Route::get('/cities', [CityController::class, 'showCity']);
+Route::get('/create-city', [CityController::class, 'createCity']);
+
+//*****public
+Route::get('/public', [PublicController::class, 'index']);
+
+Route::get('/create', [PublicController::class, 'create'])->name('public.create');
+Route::post('/create', [PublicController::class, 'store'])->name('public.store');
+
+Route::get('/show', [PublicController::class, 'show'])->name('public.show');
+
+Route::get('/edit', [PublicController::class, 'edit'])->name('public.edit');
+Route::post('/edit', [PublicController::class, 'update'])->name('public.update');
+
+Route::get('/delete/{id}', [PublicController::class, 'destroy'])->name('public.delete');
+
+
 
 /*********  start Database: Query Builder *********/
 
@@ -320,9 +349,9 @@ Route::get('/dashboard', function () {
 // 	return view('dashboard');
 // })->name('dashboard');
 
-// Route::get('/login', function () {
-// 	return view('auth.login');
-// })->name('login');
+Route::get('/login', function () {
+	return view('auth.login');
+})->name('login');
 
 // Route::get('/', function () {
 //     $array = ['Post title', 2022,04,5, 'Author name'];
@@ -473,6 +502,9 @@ Route::get('/dashboard', function () {
 // Route::get('/user/{id}', [ViewController::class, 'show']);
 /*********  end Controller *********/
 
+
+
+
 /*********  start Middleware *********/
 // Route::get('/user/{id}', function (string $id) {
 //   dd('admin has a roll');
@@ -523,14 +555,11 @@ Route::get('/dashboard', function () {
 // 	return view('auth.login');
 // })->name('login');
 
-
 // Route::group(['middleware' => ['auth', 'admin']], function() {
 //     Route::get('/admin', [AdminController::class, 'index']);
-
 // });
 
 // Route::get('/admin', [AdminController::class, 'index']);
-
 
 // Route::put('/user/{id}', function(string $id) {
 //     dd('user id: '.$id.', '.'has an editor and has a roll');
@@ -560,8 +589,8 @@ require __DIR__ . '/auth.php';
 
 //************* Validation
 
-Route::get('/form', [HomeController::class, 'create']);
-Route::post('/form', [HomeController::class, 'store']);
+// Route::get('/form', [HomeController::class, 'create']);
+// Route::post('/form', [HomeController::class, 'store']);
 
 
 
