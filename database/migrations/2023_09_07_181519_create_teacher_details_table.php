@@ -11,21 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('blogs', function (Blueprint $table) {
+        Schema::create('teacher_details', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('public_id');
-            $table->foreign('public_id')
+            $table->unsignedBigInteger('teacher_id')
+            ->unique();
+            $table->string('alternate_phone');
+            $table->string('city');
+            $table->string('address');
+            $table->foreign('teacher_id')
             ->references('id')
-            ->on('public')
-            ->onUpdate('cascade')
+            ->on('teachers')
             ->onDelete('cascade');
-            $table->string('title');
-            $table->string('body');
             $table->timestamps();
-
-            // $table->foreignId('public_id')->constrained()
-            // ->cascadeOnUpdate()
-            // ->cascadeOnDelete();
         });
     }
 
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('blogs');
+        Schema::dropIfExists('teacher_details');
     }
 };

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\StudentController;
@@ -94,10 +95,15 @@ Route::resource('/cities', CityController::class);
 Route::resource('/public', PublicController::class);
 
 //*****blog resource route
-Route::resource('/blog', BlogController::class);
+Route::resource('/blog', BlogController::class)->middleware('auth');
 
-
-
+//*****teachers normal routes
+Route::get('/teachers', [TeacherController::class, 'index']);
+Route::get('/teachers/create', [TeacherController::class, 'create']);
+Route::post('/teachers', [TeacherController::class, 'store']);
+Route::get('/teachers/edit/{teacher}',[TeacherController::class, 'edit']);
+Route::put('/teachers/{teacher}',[TeacherController::class, 'update']);
+Route::delete('/teachers/{teacher_id}', [TeacherController::class, 'destroy']);
 
 /*********  start Database: Query Builder *********/
 

@@ -23,7 +23,7 @@
     </div>
     @endif
 
-    <form action="{{route('blog.store', $public)}}" method="POST">
+    <form action="{{route('blog.store')}}" method="POST">
       @csrf
 
       <div class="form-group">
