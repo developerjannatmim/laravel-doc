@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
@@ -48,38 +49,53 @@ use Illuminate\Http\Request;
 */
 /*********  start Database: Query Builder *********/
 
-Route::get('user', [UserController::class, 'showUsers'])->name('view.allusers');
 
-Route::get('/user/{id}', [UserController::class, 'singleUser'])->name('view.singleuser');
 
-Route::get('/add', [UserController::class, 'newUser']);
+//***** user normal routes
+// Route::get('user', [UserController::class, 'showUsers'])->name('view.allusers');
+// Route::get('/user/{id}', [UserController::class, 'singleUser'])->name('view.singleuser');
+// Route::get('/add', [UserController::class, 'newUser']);
+// Route::get('/delete/{id}', [UserController::class, 'deleteUser'])->name('view.deleteuser');
+ 
+//***** users resource route
+Route::resource('/users', UserController::class);
+Route::post('/users/search', [UserController::class, 'search'])->name('users.search');
 
-Route::get('/delete/{id}', [UserController::class, 'deleteUser'])->name('view.deleteuser');
-
+//***** posts resource route
 Route::resource('posts', PostController::class);
 
-//*****students
-Route::get('/students', [StudentController::class, 'index']);
-Route::get('/create-student', [StudentController::class, 'createStudent']);
-Route::get('/show/{id}', [StudentController::class, 'showStudent'])->name('students.show');
-Route::get('/edit/{id}', [StudentController::class, 'editStudent'])->name('students.edit');
+//*****students resource route
+Route::resource('/students', StudentController::class);
 
-//*****cities
+//*****students normal routes
+// Route::get('/students', [StudentController::class, 'index']);
+// Route::get('/create-student', [StudentController::class, 'createStudent']);
+// Route::get('/show/{id}', [StudentController::class, 'showStudent'])->name('students.show');
+// Route::get('/edit/{id}', [StudentController::class, 'editStudent'])->name('students.edit');
+// Route::get('/delete/{id}', [StudentController::class, 'destroyStudent'])->name('students.destroy');
+
+//*****cities normal routes
 Route::get('/cities', [CityController::class, 'showCity']);
 Route::get('/create-city', [CityController::class, 'createCity']);
 
-//*****public
-Route::get('/public', [PublicController::class, 'index']);
+//*****cities resource route
+Route::resource('/cities', CityController::class);
 
-Route::get('/create', [PublicController::class, 'create'])->name('public.create');
-Route::post('/create', [PublicController::class, 'store'])->name('public.store');
+//*****public normal routes
+// Route::get('/public', [PublicController::class, 'index']);
+// Route::get('/create', [PublicController::class, 'create'])->name('public.create');
+// Route::post('/create', [PublicController::class, 'store'])->name('public.store');
+// Route::get('/show', [PublicController::class, 'show'])->name('public.show');
+// Route::get('/edit', [PublicController::class, 'edit'])->name('public.edit');
+// Route::post('/edit', [PublicController::class, 'update'])->name('public.update');
+// Route::get('/delete/{id}', [PublicController::class, 'destroy'])->name('public.delete');
 
-Route::get('/show', [PublicController::class, 'show'])->name('public.show');
+//*****public resource route
+Route::resource('/public', PublicController::class);
 
-Route::get('/edit', [PublicController::class, 'edit'])->name('public.edit');
-Route::post('/edit', [PublicController::class, 'update'])->name('public.update');
+//*****blog resource route
+Route::resource('/blog', BlogController::class);
 
-Route::get('/delete/{id}', [PublicController::class, 'destroy'])->name('public.delete');
 
 
 

@@ -1,41 +1,59 @@
-@extends('students.layout')
+@extends('public.layout')
 
 @section('content')
-@if(session('success'))
-  <div class="alert alert-success">
-    {{ session('success') }}
-  </div>
-@endif
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>Create New Public</h1>
-      <form action="{{ route('public.store') }}" method="POST">
-        @csrf
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" name="name" placeholder="name" class="form-control" />
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="text" name="email" placeholder="email" class="form-control" />
-        </div>
-        <div class="form-group">
-          <label for="age">Age</label>
-          <input type="text" name="age" placeholder="age" class="form-control" />
-        </div>
-        <div class="form-group">
-          <label for="city">City</label>
-          <input type="text" name="city" placeholder="city" class="form-control" />
-        </div>
-        <div class="form-group">
-          <label for="address">Address</label>
-          <input type="text" name="address" placeholder="address" class="form-control" />
-        </div>
-        <button class="btn btn-primary" type="submit">Add Public</button>
-      </form>
+<div class="row">
+  <div class="col-md-6">
+    <h2>Create Public Data</h2>
+    <div class="pull-left">
+      <a class="btn btn-primary" href="{{route('public.index')}}">Back</a>
     </div>
+  </div>
+</div>
+<div class="row">
+  <div class="clo-md-12">
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+      There were some problems with your input.<br><br>
+      @foreach ($errors->all() as $error)
+        <ul>
+          <li>{{$error}}</li>
+        </ul>
+      @endforeach
+    </div>
+    @endif
+
+    <form action="{{route('public.store')}}" method="POST">
+      @csrf
+
+      <div class="form-group">
+        <label for="name" class="mb-2 mt-2"><b>Name:</b></label>
+        <input class="form-control" type="text" name="name" placeholder="Name" />
+      </div>
+      <div class="form-group">
+        <label for="email" class="mb-2 mt-2"><b>Email:</b></label>
+        <input class="form-control" type="text" name="email" placeholder="Email" />
+      </div>
+      <div class="form-group">
+        <label for="password" class="mb-2 mt-2"><b>Password:</b></label>
+        <input class="form-control" type="password" name="password" placeholder="Password" />
+      </div>
+      <div class="form-group">
+        <label for="age" class="mb-2 mt-2"><b>Age:</b></label>
+        <input class="form-control" type="text" name="age"placeholder="Age" />
+      </div>
+      <div class="form-group">
+        <label for="city" class="mb-2 mt-2"><b>City:</b></label>
+        <input class="form-control" type="text" name="city" placeholder="City" />
+      </div>
+      <div class="form-group">
+        <label for="address" class="mb-2 mt-2"><b>Address:</b></label>
+        <input class="form-control" type="text" name="address" placeholder="Address" />
+      </div>
+      <div class="mt-3">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
   </div>
 </div>
 @endsection

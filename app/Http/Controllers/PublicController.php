@@ -8,54 +8,68 @@ use Illuminate\Support\Facades\Auth;
 
 class PublicController extends Controller
 {
+
     public function index()
-    {
-        $public = Publics::orderBy('id', 'asc')->get();
-        return view('public.index', compact('public'));
-    }
+	{
+		$publics = Publics::orderBy('id')->paginate(5);
+		return view('public.index', compact('publics'));
+	}
 
-    public function create()
-    {
-        return view('public.create');
-    }
+	public function create()
+	{
+		return view('public.create');
+	}
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'age' => 'required',
-            'city' => 'required',
-            'address' => 'required',
-        ]);
+	public function store(Request $request)
+	{
+		$request->validate([
+			'name' => 'required',
+			'email' => 'required',
+			'password' => 'required',
+			'age' => 'required',
+			'city' => 'required',
+			'address' => 'required'
+		]);
 
-        Publics::create($request->all());
+		Publics::create($request->all());
+		return redirect()->route('public.index')
+		->with(['message' => 'data added successfully']);
 
-        // $public = new Publics;
-        // $public->name = $request['name'];
-        // $public->email = $request['email'];
-        // $public->age = $request['age'];
-        // $public->city = $request['city'];
-        // $public->address = $request['address'];
-        // $request->public();
-        // $public->save();
-        return redirect()->route('public.index')->with(['success' => 'data added successfully']);
-    }
-    
-    public function edit()
-    {
-        return view('public.edit');
-    }
+	}
 
-    public function update(Request $request)
-    {
+	public function show(Publics $public)
+	{
+		return view('public.show', compact('public'));
+	}
 
-    }
+	public function edit(Publics $public)
+	{
+		return view('public.edit', compact('public'));
+	}
 
-    public function destroy(Request $request)
-    {
 
-    }
+	public function update(Request $request, Publics $public)
+	{
+		$request->validate([
+			'name' => 'required|max:30',
+			'email' => 'required|email|max:20',
+			'age' => 'required',
+			'city' => 'required',
+			'address' => 'required'
+		]);
 
-    
+		if( $public->update($request->all()) ) {
+	    return redirect()->route('public.index')
+	    ->with('Success', 'public updated successfully');
+	    }
+
+	}
+
+	public function destroy(Publics $public)
+	{
+		$public->delete();
+		return redirect()->back()->with(['success' => 'deleted successfully']);
+
+	}
+
 }

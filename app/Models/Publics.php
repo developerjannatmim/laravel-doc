@@ -17,6 +17,7 @@ class Publics extends Model
     protected $fillable = [
         'name',
         'email',
+        'password',
         'age',
         'city',
         'address'

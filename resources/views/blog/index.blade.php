@@ -1,30 +1,46 @@
-@extends('students.layout')
+@extends('blog.layout')
 
 @section('content')
-<h1>All Student data</h1>
+<h1>All Blog </h1>
 <div class="container">
   <div class="row">
     <div class="col-md-12 mt-3">
       <table class="table table-bordered table-striped">
+        <div class="mb-3">
+          <a class="btn btn-info" href="{{ route('blog.create') }}">Create New Blog</a>
+        </div>
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+          {{ $message }}
+        </div>
+        @endif
         <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Age</th>
-          <th>City Name</th>
+          <th>Title</th>
+          <th>Text Body</th>
+          <th>Actions</th>
         </tr>
         <tr>
-          @foreach($students as $data)
-          <td>{{ $data->name }}</td>
-          <td>{{ $data->email }}</td>
-          <td>{{ $data->age }}</td>
-          <td>{{ $data->city }}</td>
+          @foreach($blogs as $data)
+          <td>{{ $data->title }}</td>
+          <td>{{ $data->body }}</td>
           <td>
-            <a href="{{ route('students.show', $data->id) }}" class="btn btn-primary">View</a>
-            <a href="{{ route('students.edit', $data->id) }}" class="btn btn-primary">Update</a>
+            <form action="{{ route('blog.destroy', $data->id) }}" method="POST">
+
+              <a class="btn btn-info" href="{{ route('blog.show', $data->id) }}">Show</a>
+
+              <a class="btn btn-primary" href="{{ route('blog.edit', $data->id) }}">Edit</a>
+
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
           </td>
         </tr>
         @endforeach
       </table>
+      <div>
+        {{ $blogs->links() }}
+      </div>
     </div>
   </div>
 </div>

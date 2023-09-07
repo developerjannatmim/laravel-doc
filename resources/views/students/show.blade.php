@@ -1,13 +1,38 @@
 @extends('students.layout')
 
 @section('content')
-<h2>Single Student Date</h2>
-<article>
-  @foreach($student as $data)
-  <p><b>Name: </b> {{$data->name}}</p>
-  <p><b>Email: </b> {{$data->email}}</p>
-  <p><b>Age: </b> {{$data->age}}</p>
-  <p><b>City: </b> {{$data->city}}</p>
-  @endforeach
-</article>
+<div class="row">
+  <div class="col-md-12">
+    <h2>Show Student</h2>
+    <div class="mb-3">
+      <a class="btn btn-primary" href="{{route('students.index')}}">Back</a>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="form-group">
+      <strong>Name:</strong>
+      {{$student->name}}
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="form-group">
+      <strong>Email:</strong>
+      {{$student->email}}
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="form-group">
+      <strong>Age:</strong>
+      {{$student->age}}
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="form-group">
+      <strong>City:</strong>
+      {{$student->city}}
+    </div>
+  </div>
+</div>
 @endsection
