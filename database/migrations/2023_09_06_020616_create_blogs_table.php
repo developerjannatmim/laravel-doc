@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('public_id')->index();
+            $table->unsignedBigInteger('public_id');
+            $table->foreign('public_id')->references('id')->on('public');
             $table->string('title');
             $table->string('body');
             $table->timestamps();
