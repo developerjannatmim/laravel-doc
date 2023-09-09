@@ -12,10 +12,11 @@ class Blog extends Model
 
     public function public(): BelongsTo
     {
-        return $this->belongsTo(Publics::class, 'public_id');
+        return $this->belongsTo(Publics::class, 'public_id', 'id');
     }
 
     protected $fillable = [
+        'public_id',
         'title',
         'body'
     ];
