@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('city');
             $table->integer('marks');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

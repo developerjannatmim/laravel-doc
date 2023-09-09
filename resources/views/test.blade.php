@@ -8,10 +8,20 @@
 </head>
 <body>
     @foreach ($tests as $data)
-        {{$data->id}}
-        {{$data->email}}
-        {{$data->city}}
-        {{$data->marks}}
+    <ul>
+        <li><span>id: {{$data->id}}</span><br>
+            <span>name: {{$data->name}}</span><br>
+            <span>email: {{$data->email}}</span><br>
+            <span>city: {{$data->city}}</span><br>
+            <span>marks: {{$data->marks}}</span></li>
+    </ul>
     @endforeach
+
+    {{-- <span>id: {{$tests->id}}</span><br>
+    <span>name: {{$tests->name}}</span><br>
+    <span>email: {{$tests->email}}</span><br>
+    <span>city: {{$tests->city}}</span><br>
+    <span>marks: {{$tests->marks}}</span> --}}
+
 </body>
 </html>

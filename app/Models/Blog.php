@@ -16,7 +16,7 @@ class Blog extends Model
     }
 
     protected $fillable = [
-        'public_id',
+        
         'title',
         'body'
     ];

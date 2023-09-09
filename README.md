@@ -175,3 +175,9 @@ Information:
 2. plunk() specipic colum er shob data dey. r plunk() method maximum 2ta param except kore.
 
 3. distinct() method 
+
+## Eloquent: Mutators & Casting
+Information:
+1. Accessors, use kora hoy jokhon database er field er behaviour change korar dorkar hoy.
+
+2. Mutetors, insert korar shomoy data field er behaviour kemon hobe, ta bole dete mutetors use hoy.

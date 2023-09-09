@@ -32,6 +32,7 @@ class BlogController extends Controller
         $blog->title = $request['title'];
         $blog->body = $request['body'];
         $blog->public()->associate($public)->save();
+		dd($blog);
 
 		return redirect()->route('blog.index')
 		->with(['message' => 'data added successfully']);

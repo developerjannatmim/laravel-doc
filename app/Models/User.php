@@ -49,6 +49,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'created_at' => 'datetime:d-m-Y',
     ];
 
     // public function getRouteKey(): mixed
@@ -70,5 +71,20 @@ class User extends Authenticatable
     // }
 
     //public $timestamps = false;
+
+    public function getNameEmailAttribute()
+    {
+        return $this->name . '-' . $this->email; // name_email // nameemail
+    }
+
+    public function getNameAttribute($value)
+    {
+        return $this->attributes['name']=ucfirst($value);
+    }
+
+    public function getCityAttribute($value)
+    {
+        return $this->attributes['city']=ucfirst($value);
+    }
 
 }

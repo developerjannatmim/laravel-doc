@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Publics extends Model
 {
     use HasFactory;
-    public function blog(): HasMany
+    public function blogs(): HasMany
     {
         return $this->hasMany(Blog::class);
     }

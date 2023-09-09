@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\EloquentController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
@@ -48,9 +49,42 @@ use Illuminate\Http\Request;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/', function () {
+  return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+  return view('dashboard');
+})->name('dashboard');
+
+
+//************* Breeze packages
+Route::middleware('auth')->group(function () {
+  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__ . '/auth.php';
+
+
+
+
+/*********  start Eloquent *********/
+
+Route::get('/test', [EloquentController::class, 'show']);
+
+
+/*********  end Eloquent *********/
+
+
+
+
+
+
+
 /*********  start Database: Query Builder *********/
-
-
 
 //***** user normal routes
 // Route::get('user', [UserController::class, 'showUsers'])->name('view.allusers');
@@ -95,7 +129,7 @@ Route::resource('/cities', CityController::class);
 Route::resource('/public', PublicController::class);
 
 //*****blog resource route
-Route::resource('/blog', BlogController::class)->middleware('auth');
+Route::resource('/blog', BlogController::class);
 
 //*****teachers normal routes
 Route::get('/teachers', [TeacherController::class, 'index']);
@@ -131,8 +165,8 @@ Route::delete('/teachers/{teacher_id}', [TeacherController::class, 'destroy']);
 // Route::get('/', function () {
 //   return view('welcome');
 // });
-Route::get('/', function () {
-  return view('welcome');
+// Route::get('/', function () {
+// return view('welcome');
 
   // Log::emergency('this is your age: '.rand(1,20));
   // Log::alert('this is your age: '.rand(1,20));
@@ -142,11 +176,9 @@ Route::get('/', function () {
   // Log::notice('this is your age: '.rand(1,20));
   // Log::info('this is your age: '.rand(1,20));
   // Log::debug('this is your age: '.rand(1,20));
-});
+// });
 
-Route::get('/dashboard', function () {
-  return view('dashboard');
-})->name('dashboard');
+
 
 
 /*********  start Error Handling *********/
@@ -371,9 +403,9 @@ Route::get('/dashboard', function () {
 // 	return view('dashboard');
 // })->name('dashboard');
 
-Route::get('/login', function () {
-	return view('auth.login');
-})->name('login');
+// Route::get('/login', function () {
+// 	return view('auth.login');
+// })->name('login');
 
 // Route::get('/', function () {
 //     $array = ['Post title', 2022,04,5, 'Author name'];
@@ -597,16 +629,6 @@ Route::get('/login', function () {
 
 
 
-
-//************* Breeze packages
-
-Route::middleware('auth')->group(function () {
-  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-require __DIR__ . '/auth.php';
 
 
 //************* Validation
