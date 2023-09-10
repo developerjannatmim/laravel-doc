@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Str;
 
 class ProfileController extends Controller
 {
@@ -32,9 +33,15 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
 
-        $request->user()->save();
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        if(!empty($request->file('image'))){
+            $file = $request->file('image');
+            $randomStr = Str::random(10);
+            $filename = Auth::id().'-'.$randomStr.'.'.$file->getClientOriginalExtension();
+            $file->move('upload/', $filename);
+            Auth()->user()->update([ 'image' => $filename ]);
+            return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        }
+        return redirect()->back()->withErrors('profile not updated');
     }
 
     /**

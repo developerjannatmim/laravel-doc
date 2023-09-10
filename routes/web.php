@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\EloquentController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
@@ -67,6 +68,15 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+/*********  start File Storage *********/
+Route::controller(ImageController::class)->group( function() {
+  Route::get('/image-upload', 'index');
+  Route::post('/image-upload', 'imageUpload')->name('image.store');
+});
+/*********  end File Storage *********/
+
+
 
 
 
