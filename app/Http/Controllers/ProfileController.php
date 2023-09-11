@@ -41,7 +41,7 @@ class ProfileController extends Controller
             Auth()->user()->update([ 'image' => $filename ]);
             return Redirect::route('profile.edit')->with('status', 'profile-updated');
         }
-        return redirect()->back()->withErrors('profile not updated');
+        return redirect()->back()->withInput();
     }
 
     /**

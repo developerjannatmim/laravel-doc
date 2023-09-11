@@ -23,7 +23,7 @@
     </div>
     @endif
 
-    <form action="{{route('students.update', $student->id)}}" method="POST">
+    <form action="{{route('students.update', $student->id)}}" method="POST" enctype="multipart/form-data">
       @csrf
       @method('PUT')
 
@@ -39,9 +39,13 @@
         <label for="age" class="mb-2 mt-2"><b>Age:</b></label>
         <input class="form-control" type="text" name="age" value="{{$student->age}}" />
       </div>
-            <div class="form-group">
+      <div class="form-group">
         <label for="city" class="mb-2 mt-2"><b>City:</b></label>
         <input class="form-control" type="text" name="city" value="{{$student->city}}" />
+      </div>
+      <div class="form-group">
+        <label for="form-label" class="mb-2 mt-2"><b>Image:</b></label>
+        <input class="form-control" type="file" name="image" value="{{ $student->image }}" />
       </div>
       <div class="mt-3">
         <button type="submit" class="btn btn-primary">Submit</button>

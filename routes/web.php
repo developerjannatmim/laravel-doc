@@ -117,6 +117,7 @@ Route::resource('/students', StudentController::class);
 // Route::get('/create-student', [StudentController::class, 'createStudent']);
 // Route::get('/show/{id}', [StudentController::class, 'showStudent'])->name('students.show');
 // Route::get('/edit/{id}', [StudentController::class, 'editStudent'])->name('students.edit');
+// Route::put('/update/{id}', [StudentController::class, 'updateStudent'])->name('students.update');
 // Route::get('/delete/{id}', [StudentController::class, 'destroyStudent'])->name('students.destroy');
 
 //*****cities normal routes

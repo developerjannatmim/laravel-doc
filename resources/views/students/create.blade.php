@@ -23,24 +23,28 @@
     </div>
     @endif
 
-    <form action="{{route('students.store')}}" method="POST">
+    <form action="{{route('students.store')}}" method="POST" enctype="multipart/form-data">
       @csrf
 
       <div class="form-group">
         <label for="name" class="mb-2 mt-2"><b>Name:</b></label>
-        <input class="form-control" type="text" name="name" placeholder="Name" />
+        <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" placeholder="Name" />
       </div>
       <div class="form-group">
         <label for="email" class="mb-2 mt-2"><b>Email:</b></label>
-        <input class="form-control" type="text" name="email" placeholder="Email" />
+        <input class="form-control @error('email') is-invalid @enderror" type="text" name="email" placeholder="Email" />
       </div>
       <div class="form-group">
         <label for="age" class="mb-2 mt-2"><b>Age:</b></label>
-        <input class="form-control" type="text" name="age"placeholder="Age" />
+        <input class="form-control @error('age') is-invalid @enderror" type="text" name="age"placeholder="Age" />
       </div>
-            <div class="form-group">
-        <label for="city" class="mb-2 mt-2"><b>City:</b></label>
-        <input class="form-control" type="text" name="city" placeholder="City" />
+      <div class="form-group">
+        <label for="city" class="mb-2 mt-2"><b>City ID:</b></label>
+        <input class="form-control @error('city') is-invalid @enderror" type="text" name="city" placeholder="City ID" />
+      </div>
+      <div class="form-group">
+        <label for="form-label" class="mb-2 mt-2"><b>Image:</b></label>
+        <input class="form-control @error('image') is-invalid @enderror" type="file" name="image" placeholder="Image..." />
       </div>
       <div class="mt-3">
         <button type="submit" class="btn btn-primary">Submit</button>

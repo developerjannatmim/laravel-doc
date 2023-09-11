@@ -34,5 +34,11 @@
       {{$student->city}}
     </div>
   </div>
+  <div class="col-md-12">
+    <div class="form-group">
+      <strong>Image:</strong>
+      <img src="{{ url('stu_imgs/'.$student->image) }}" alt="" style="height: 50px; width: 50px">
+    </div>
+  </div>
 </div>
 @endsection

@@ -15,18 +15,26 @@
         </div>
         @endif
         <tr>
+          <th>ID</th>
           <th>Name</th>
           <th>Email</th>
           <th>Age</th>
           <th>City ID</th>
+          <th>Image</th>
           <th>Actions</th>
         </tr>
         <tr>
           @foreach($students as $data)
+          <td>{{ $data->id }}</td>
           <td>{{ $data->name }}</td>
           <td>{{ $data->email }}</td>
           <td>{{ $data->age }}</td>
           <td>{{ $data->city }}</td>
+          <td>
+            @if(!empty($data->image))
+            <img src="{{ url( 'stu_imgs/'.$data->image ) }}" alt="stu_imgs" style="height: 50px; width: 50px">
+            @endif
+          </td>
           <td>
             <form action="{{ route('students.destroy',$data->id) }}" method="POST">
 

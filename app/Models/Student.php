@@ -14,7 +14,8 @@ class Student extends Model
         'name',
         'email',
         'age',
-        'city'
+        'city',
+        'image'
     ];
 
     public function city(): HasOne

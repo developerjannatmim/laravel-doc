@@ -181,3 +181,7 @@ Information:
 1. Accessors, use kora hoy jokhon database er field er behaviour change korar dorkar hoy.
 
 2. Mutetors, insert korar shomoy data field er behaviour kemon hobe, ta bole dete mutetors use hoy.
+
+
+## Mutetors
+1. Eloquent mutators are used to determine how data is processed when it is stored. 
