@@ -22,8 +22,8 @@ class PostStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|unique:posts|max:5',
-            'body' => 'required|max:10',
+            'title' => 'required|unique:posts|max:100',
+            'body' => 'required|max:1000',
             'publish_at' => 'nullable|date',
         ];
     }

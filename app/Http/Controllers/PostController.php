@@ -15,9 +15,8 @@ class PostController extends Controller
    */
   public function index()
   {
-    $posts = Post::orderBy('id', 'desc')->paginate(5);
-    return view('posts.index', ['posts' => $posts])
-      ->with('i', (request()->input('page', 1) - 1) * 5);
+    $posts = Post::orderBy('id')->paginate(5);
+    return view('posts.index', ['posts' => $posts]);
   }
 
   /**
@@ -78,18 +77,22 @@ class PostController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function edit(Post $post)
   {
-    //
+    return view('posts.edit', compact('post'));
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(PostStoreRequest $request)
+  public function update(Request $request, $id)
   {
-    $data = $request->validated();
-    return response()->json(Post::where(['id' => $data->id])->update($data));
+    $post = Post::find($id);
+    $post->title = $request->input('title');
+    $post->body = $request->input('body');
+    $post->save();
+    return redirect()->route('posts.index')
+      ->with('Success', 'Post updated successfully.');
   }
 
   /**
