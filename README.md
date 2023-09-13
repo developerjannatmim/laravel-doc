@@ -184,4 +184,11 @@ Information:
 
 
 ## Mutetors
-1. Eloquent mutators are used to determine how data is processed when it is stored. 
+1. Eloquent mutators are used to determine how data is processed when it is stored.
+
+## Note:
+1. :: ei sign k scope resolution bole.
+
+2. jokon new kono helper laravel ee add korar dorker hobe tokhon ta compser.json ee add korte hobe. add korar por must ( composer dump:autoload ) run korte hobe. then project run korte hobe.
+
+3. 

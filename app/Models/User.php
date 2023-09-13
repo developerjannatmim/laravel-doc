@@ -73,11 +73,13 @@ class User extends Authenticatable
 
     //public $timestamps = false;
 
+    //accessor
     public function getNameEmailAttribute()
     {
         return $this->name . '-' . $this->email; // name_email // nameemail
     }
 
+    //mutetor
     public function getNameAttribute($value)
     {
         return $this->attributes['name']=ucfirst($value);
