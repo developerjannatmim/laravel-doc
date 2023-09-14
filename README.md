@@ -72,7 +72,7 @@ Information:
 
 2. লারাভেল একটি মিডলওয়্যার অন্তর্ভুক্ত করে যা যাচাই করে যে আপনার অ্যাপ্লিকেশনটির ব্যবহারকারী প্রমাণীকৃত। ব্যবহারকারীর প্রমাণীকরণ না হলে, মিডলওয়্যার ব্যবহারকারীকে আপনার অ্যাপ্লিকেশনের লগইন স্ক্রিনে পুনঃনির্দেশিত করবে। আর, যদি ব্যবহারকারী প্রমাণীকৃত হয়, মিডলওয়্যার অনুরোধটিকে অ্যাপ্লিকেশনটিতে আরও এগিয়ে যাওয়ার অনুমতি দেবে।
 
-3. (php artisan optimize:clear) command run korle, shob cache clear hoye jabe. jodi kono karone route kaj na kore tahole ei comman run korbo.
+3. (php artisan optimize:clear) command run korle, shob cache clear hoye jabe. jodi kono karone route kaj na kore tahole ei command run korbo.
 
 4. FastCGI(fast common gateway interface) jar kaj browser theke http request data accept kore er processing kore http response return korbe.
 ### Terminable Middleware
@@ -191,4 +191,33 @@ Information:
 
 2. jokon new kono helper laravel ee add korar dorker hobe tokhon ta compser.json ee add korte hobe. add korar por must ( composer dump:autoload ) run korte hobe. then project run korte hobe.
 
-3. 
+3. create() metod er shathe save() method kaj kore. kintu update() method er shathe save() method kaj kore na.
+
+## Join
+1. left join hocche, left er shob data fetch toh korbey(matching na korleo) shathe right er shudhu matro matching data gula fetch korbe.
+
+2. right join hocche, right er shob data fetch toh korbey(matching na korleo) shathe left er shudhu matro matching data gula fetch korbe.
+
+3. 2ta table er shudhu matro matching data gula fetch korbe.
+
+## Projects for practice:
+### choose one of them:
+1. Blog
+2. Social Media
+3. School Management System -> i will do it...
+
+### Tables are:
+1. users(admin, administrator, students, teachers)
+2. students
+3. teachers
+4. classroom
+5. subject
+6. profile
+7. contact
+8. course
+9. attendance
+10. role
+11. login
+12. ragistration
+
+### 

@@ -26,15 +26,36 @@ class CollectionController extends Controller
         // //$collcetions = $items;
         // dd($items->avg('sale'));
 
+        //$res = $users->toArray();
+        //$res = $users->all();
+        //$res = $users->pluck('email');
+        // $res = $users->each(function($user) {
+            //     //$user->username = 'a';
+            //     //$user->year = date('Y');
+            //     unset($user->created_at);
+            //     unset($user->updated_at);
+            
+            // });
+            
+            // $res = $users->search(function($user) {
+            //     return $user->email == 'mim@gmail.com';
+                
+            // });
+                
             $users = User::get();
-            //$res = $users->toArray();
-            //$res = $users->all();
-            //$res = $users->pluck('email');
-            $res = $users->each(function($user) {
-                return $user->username = 'a';
+            $output = $users->where('age', '>', 18)
+            ->where('name', 'Mim')
+            ->where('email', 'mim@gmail.com');
+
+            $output = $output->each(function($user) {
+                $user->username = 'a';
+                $user->year = date('Y');
+                unset($user->created_at);
+                unset($user->updated_at);
+                unset($user->email_verified_at);
             });
 
-            dd($res);
+            dd($output);
 
 
 
@@ -61,5 +82,5 @@ class CollectionController extends Controller
 
 
 
-    } 
+    }
 }

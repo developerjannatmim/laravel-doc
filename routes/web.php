@@ -81,18 +81,19 @@ Route::controller(ImageController::class)->group( function() {
 
 
 
-
 /*********  start Eloquent *********/
-
 Route::get('/test', [EloquentController::class, 'show']);
-
-
 /*********  end Eloquent *********/
 
 
 /*********  start Collection *********/
 Route::get('/collect', [CollectionController::class, 'items']);
 /*********  end Collection *********/
+
+
+/*********  start Relationship *********/
+Route::get('/rel', [NewController::class, 'index']);
+/*********  end Relationship *********/
 
 
 

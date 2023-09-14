@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -26,6 +27,11 @@ class User extends Authenticatable
         'age',
         'city'
     ];
+
+    public function product(): HasOne
+    {
+        return $this->hasOne(Product::class);
+    }
 
     public function posts(): HasMany
     {
@@ -80,14 +86,14 @@ class User extends Authenticatable
     }
 
     //mutetor
-    public function getNameAttribute($value)
-    {
-        return $this->attributes['name']=ucfirst($value);
-    }
+    // public function getNameAttribute($value)
+    // {
+    //     return $this->attributes['name']=ucfirst($value);
+    // }
 
-    public function getCityAttribute($value)
-    {
-        return $this->attributes['city']=ucfirst($value);
-    }
+    // public function getCityAttribute($value)
+    // {
+    //     return $this->attributes['city']=ucfirst($value);
+    // }
 
 }
