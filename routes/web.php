@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\EloquentController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PublicController;
@@ -89,8 +90,9 @@ Route::get('/test', [EloquentController::class, 'show']);
 /*********  end Eloquent *********/
 
 
-
-
+/*********  start Collection *********/
+Route::get('/collect', [CollectionController::class, 'items']);
+/*********  end Collection *********/
 
 
 
